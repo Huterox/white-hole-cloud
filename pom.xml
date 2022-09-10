@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <groupId>com.huterox.whitehole</groupId>
+    <artifactId>whiteholecloud</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>whiteholecloud</name>
+    <description>父工程</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>whitehole-user</module>
+        <module>whitehole-activity</module>
+        <module>whitehole-quiz</module>
+        <module>whitehole-blog</module>
+        <module>whitehole-community</module>
+    </modules>
+
+</project>
