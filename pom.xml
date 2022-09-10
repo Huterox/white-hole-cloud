@@ -17,6 +17,7 @@
         <module>whitehole-quiz</module>
         <module>whitehole-blog</module>
         <module>whitehole-community</module>
+        <module>renren-fast</module>
     </modules>
 
 </project>

@@ -2,11 +2,13 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="whitehole-user" />
+        <module name="renren-fast" />
         <module name="whitehole-blog" />
         <module name="whitehole-quiz" />
         <module name="whitehole-community" />
@@ -14,6 +16,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="renren-fast" target="1.8" />
       <module name="whitehole-activity" target="1.8" />
       <module name="whitehole-blog" target="1.8" />
       <module name="whitehole-community" target="1.8" />
@@ -24,6 +27,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="renren-fast" options="-parameters" />
       <module name="whitehole-activity" options="-parameters" />
       <module name="whitehole-blog" options="-parameters" />
       <module name="whitehole-community" options="-parameters" />

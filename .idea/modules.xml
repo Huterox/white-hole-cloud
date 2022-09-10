@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/renren-fast/renren-fast.iml" filepath="$PROJECT_DIR$/renren-fast/renren-fast.iml" />
       <module fileurl="file://$PROJECT_DIR$/whitehole-quiz/whitehole-activity/whitehole-activity.iml" filepath="$PROJECT_DIR$/whitehole-quiz/whitehole-activity/whitehole-activity.iml" />
       <module fileurl="file://$PROJECT_DIR$/whitehole-blog/whitehole-blog.iml" filepath="$PROJECT_DIR$/whitehole-blog/whitehole-blog.iml" />
-      <module fileurl="file://$PROJECT_DIR$/community/whitehole-community.iml" filepath="$PROJECT_DIR$/community/whitehole-community.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whitehole-community/whitehole-community.iml" filepath="$PROJECT_DIR$/whitehole-community/whitehole-community.iml" />
       <module fileurl="file://$PROJECT_DIR$/whitehole-quiz/whitehole-quiz.iml" filepath="$PROJECT_DIR$/whitehole-quiz/whitehole-quiz.iml" />
       <module fileurl="file://$PROJECT_DIR$/whitehole-user/whitehole-user.iml" filepath="$PROJECT_DIR$/whitehole-user/whitehole-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/whiteholecloud0.7.iml" filepath="$PROJECT_DIR$/.idea/whiteholecloud0.7.iml" />

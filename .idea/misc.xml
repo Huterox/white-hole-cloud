@@ -11,8 +11,12 @@
         <option value="$PROJECT_DIR$/whitehole-community/pom.xml" />
         <option value="$PROJECT_DIR$/whitehole-user/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/renren-fast/pom.xml" />
       </list>
     </option>
+  </component>
+  <component name="PWA">
+    <option name="wasEnabledAtLeastOnce" value="true" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="openjdk-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
