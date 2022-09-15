@@ -18,6 +18,9 @@
         <module>whitehole-blog</module>
         <module>whitehole-community</module>
         <module>renren-fast</module>
+        <module>whitehole-hole</module>
+        <module>renren-generator</module>
+        <module>whiteholo-common</module>
     </modules>
 
 </project>

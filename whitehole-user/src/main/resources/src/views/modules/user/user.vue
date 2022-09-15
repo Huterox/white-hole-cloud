@@ -1,0 +1,236 @@
+<template>
+  <div class="mod-config">
+    <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
+      <el-form-item>
+        <el-input v-model="dataForm.key" placeholder="参数名" clearable></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button @click="getDataList()">查询</el-button>
+        <el-button v-if="isAuth('user:user:save')" type="primary" @click="addOrUpdateHandle()">新增</el-button>
+        <el-button v-if="isAuth('user:user:delete')" type="danger" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">批量删除</el-button>
+      </el-form-item>
+    </el-form>
+    <el-table
+      :data="dataList"
+      border
+      v-loading="dataListLoading"
+      @selection-change="selectionChangeHandle"
+      style="width: 100%;">
+      <el-table-column
+        type="selection"
+        header-align="center"
+        align="center"
+        width="50">
+      </el-table-column>
+      <el-table-column
+        prop="username"
+        header-align="center"
+        align="center"
+        label="这个是用户名，相当于私钥">
+      </el-table-column>
+      <el-table-column
+        prop="password"
+        header-align="center"
+        align="center"
+        label="这个是密码，后面会使用md5加密">
+      </el-table-column>
+      <el-table-column
+        prop="userid"
+        header-align="center"
+        align="center"
+        label="这个是用户id,使用uuid生成，是全局唯一的，相当于公钥">
+      </el-table-column>
+      <el-table-column
+        prop="nickname"
+        header-align="center"
+        align="center"
+        label="用户昵称，可重复，默认会把username作为昵称，可修改">
+      </el-table-column>
+      <el-table-column
+        prop="age"
+        header-align="center"
+        align="center"
+        label="用户年龄">
+      </el-table-column>
+      <el-table-column
+        prop="phone"
+        header-align="center"
+        align="center"
+        label="用户电话号码，用于后期密码找回">
+      </el-table-column>
+      <el-table-column
+        prop="email"
+        header-align="center"
+        align="center"
+        label="用户邮箱，用于用户注册验证，密码找回，如果用户在本平台注册的话，是必须要的
+">
+      </el-table-column>
+      <el-table-column
+        prop="describe"
+        header-align="center"
+        align="center"
+        label="用户对自己的简介描述，相当于个性签名">
+      </el-table-column>
+      <el-table-column
+        prop="level"
+        header-align="center"
+        align="center"
+        label="用户等级，1-普通用户 2-捐赠，高级用户">
+      </el-table-column>
+      <el-table-column
+        prop="holeValue"
+        header-align="center"
+        align="center"
+        label="白洞值">
+      </el-table-column>
+      <el-table-column
+        prop="home"
+        header-align="center"
+        align="center"
+        label="用户地址">
+      </el-table-column>
+      <el-table-column
+        prop="status"
+        header-align="center"
+        align="center"
+        label="用户状态，1-正常 2-警告 3-封禁">
+      </el-table-column>
+      <el-table-column
+        prop="tokenThere"
+        header-align="center"
+        align="center"
+        label="如果用户选择第三方登录，那么会将第三方的token保存到数据当中，然后自动创建userid,其余信息需要用户自己填写">
+      </el-table-column>
+      <el-table-column
+        prop="creatTime"
+        header-align="center"
+        align="center"
+        label="用户加入社区的时间，格式为2022-9-12">
+      </el-table-column>
+      <el-table-column
+        fixed="right"
+        header-align="center"
+        align="center"
+        width="150"
+        label="操作">
+        <template slot-scope="scope">
+          <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.userid)">修改</el-button>
+          <el-button type="text" size="small" @click="deleteHandle(scope.row.userid)">删除</el-button>
+        </template>
+      </el-table-column>
+    </el-table>
+    <el-pagination
+      @size-change="sizeChangeHandle"
+      @current-change="currentChangeHandle"
+      :current-page="pageIndex"
+      :page-sizes="[10, 20, 50, 100]"
+      :page-size="pageSize"
+      :total="totalPage"
+      layout="total, sizes, prev, pager, next, jumper">
+    </el-pagination>
+    <!-- 弹窗, 新增 / 修改 -->
+    <add-or-update v-if="addOrUpdateVisible" ref="addOrUpdate" @refreshDataList="getDataList"></add-or-update>
+  </div>
+</template>
+
+<script>
+  import AddOrUpdate from './user-add-or-update'
+  export default {
+    data () {
+      return {
+        dataForm: {
+          key: ''
+        },
+        dataList: [],
+        pageIndex: 1,
+        pageSize: 10,
+        totalPage: 0,
+        dataListLoading: false,
+        dataListSelections: [],
+        addOrUpdateVisible: false
+      }
+    },
+    components: {
+      AddOrUpdate
+    },
+    activated () {
+      this.getDataList()
+    },
+    methods: {
+      // 获取数据列表
+      getDataList () {
+        this.dataListLoading = true
+        this.$http({
+          url: this.$http.adornUrl('/user/user/list'),
+          method: 'get',
+          params: this.$http.adornParams({
+            'page': this.pageIndex,
+            'limit': this.pageSize,
+            'key': this.dataForm.key
+          })
+        }).then(({data}) => {
+          if (data && data.code === 0) {
+            this.dataList = data.page.list
+            this.totalPage = data.page.totalCount
+          } else {
+            this.dataList = []
+            this.totalPage = 0
+          }
+          this.dataListLoading = false
+        })
+      },
+      // 每页数
+      sizeChangeHandle (val) {
+        this.pageSize = val
+        this.pageIndex = 1
+        this.getDataList()
+      },
+      // 当前页
+      currentChangeHandle (val) {
+        this.pageIndex = val
+        this.getDataList()
+      },
+      // 多选
+      selectionChangeHandle (val) {
+        this.dataListSelections = val
+      },
+      // 新增 / 修改
+      addOrUpdateHandle (id) {
+        this.addOrUpdateVisible = true
+        this.$nextTick(() => {
+          this.$refs.addOrUpdate.init(id)
+        })
+      },
+      // 删除
+      deleteHandle (id) {
+        var ids = id ? [id] : this.dataListSelections.map(item => {
+          return item.userid
+        })
+        this.$confirm(`确定对[id=${ids.join(',')}]进行[${id ? '删除' : '批量删除'}]操作?`, '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$http({
+            url: this.$http.adornUrl('/user/user/delete'),
+            method: 'post',
+            data: this.$http.adornData(ids, false)
+          }).then(({data}) => {
+            if (data && data.code === 0) {
+              this.$message({
+                message: '操作成功',
+                type: 'success',
+                duration: 1500,
+                onClose: () => {
+                  this.getDataList()
+                }
+              })
+            } else {
+              this.$message.error(data.msg)
+            }
+          })
+        })
+      }
+    }
+  }
+</script>

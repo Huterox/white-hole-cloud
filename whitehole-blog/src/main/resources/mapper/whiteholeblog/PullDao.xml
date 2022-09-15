@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.huterox.whitehole.whiteholeblog.dao.PullDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.huterox.whitehole.whiteholeblog.entity.PullEntity" id="pullMap">
+        <result property="userid" column="userid"/>
+        <result property="blogid" column="blogid"/>
+        <result property="createTime" column="create_time"/>
+        <result property="userNickname" column="user_nickname"/>
+        <result property="blogUserid" column="blog_userid"/>
+        <result property="blogUserNickname" column="blog_user_nickname"/>
+        <result property="userimg" column="userimg"/>
+        <result property="contentid" column="contentid"/>
+    </resultMap>
+
+
+</mapper>

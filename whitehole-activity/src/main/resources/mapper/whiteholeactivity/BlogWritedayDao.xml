@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.huterox.whitehole.whiteholeactivity.dao.BlogWritedayDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.huterox.whitehole.whiteholeactivity.entity.BlogWritedayEntity" id="blogWritedayMap">
+        <result property="userid" column="userid"/>
+        <result property="userNickname" column="user_nickname"/>
+        <result property="writeDays" column="write_days"/>
+        <result property="achievement" column="achievement"/>
+    </resultMap>
+
+
+</mapper>
