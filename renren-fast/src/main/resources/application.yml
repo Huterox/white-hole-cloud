@@ -4,7 +4,7 @@ server:
     uri-encoding: UTF-8
     max-threads: 1000
     min-spare-threads: 30
-  port: 8000
+  port: 8300
   connection-timeout: 5000ms
   servlet:
     context-path: /renren-fast
@@ -41,6 +41,13 @@ spring:
       matching-strategy: ANT_PATH_MATCHER
 #  resources:
 #    add-mappings: false
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        service: renren-fast
+  application:
+    name: renren-fast
 
 
 #mybatis

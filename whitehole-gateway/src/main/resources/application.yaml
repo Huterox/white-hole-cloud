@@ -59,6 +59,18 @@ spring:
             - StripPrefix=1
 
 
+        - id: admin_route
+          uri: lb://renren-fast  # 网关负载均衡的发送到renren-fast
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}  #实现路径重写
+
+  ## 所有前端项目带  /api
+  ## http://localhost:88/api/captcha.jpg
+  ## http://localhost:8080/renren-fast/captcha.jpg
+
+
 
   application:
     name: gateway
