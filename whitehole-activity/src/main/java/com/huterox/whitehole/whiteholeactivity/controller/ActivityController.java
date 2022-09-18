@@ -1,9 +1,11 @@
 package com.huterox.whitehole.whiteholeactivity.controller;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
+import com.huterox.whitehole.whiteholeactivity.feign.BlogFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -93,5 +95,6 @@ public class ActivityController {
 
         return R.ok();
     }
+
 
 }

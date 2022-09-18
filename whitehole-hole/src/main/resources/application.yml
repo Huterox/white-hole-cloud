@@ -1,5 +1,5 @@
 server:
-  port: 8000
+  port: 8150
 
 # mysql
 spring:
@@ -33,6 +33,14 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
   resources:
     static-locations: classpath:/static/,classpath:/views/
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        service: hole
+    application:
+      name: hole
 
 #mongodb:
 #  host: localhost

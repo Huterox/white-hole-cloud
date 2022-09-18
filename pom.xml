@@ -21,6 +21,7 @@
         <module>whitehole-hole</module>
         <module>renren-generator</module>
         <module>whiteholo-common</module>
+        <module>whitehole-gateway</module>
     </modules>
 
 </project>

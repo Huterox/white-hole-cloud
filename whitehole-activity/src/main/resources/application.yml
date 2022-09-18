@@ -34,6 +34,15 @@ spring:
   resources:
     static-locations: classpath:/static/,classpath:/views/
 
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        service: activity
+    application:
+      name: activity
+
 #mongodb:
 #  host: localhost
 #  port: 27017
