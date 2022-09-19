@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="whitehole-feign" />
         <module name="whiteholo-common" />
         <module name="whitehole-community" />
         <module name="whitehole-gateway" />
@@ -25,6 +26,7 @@
       <module name="whitehole-activity" target="1.8" />
       <module name="whitehole-blog" target="1.8" />
       <module name="whitehole-community" target="1.8" />
+      <module name="whitehole-feign" target="1.8" />
       <module name="whitehole-gateway" target="1.8" />
       <module name="whitehole-hole" target="1.8" />
       <module name="whitehole-quiz" target="1.8" />
@@ -41,6 +43,7 @@
       <module name="whitehole-activity" options="-parameters" />
       <module name="whitehole-blog" options="-parameters" />
       <module name="whitehole-community" options="-parameters" />
+      <module name="whitehole-feign" options="-parameters" />
       <module name="whitehole-gateway" options="-parameters" />
       <module name="whitehole-hole" options="-parameters" />
       <module name="whitehole-quiz" options="-parameters" />

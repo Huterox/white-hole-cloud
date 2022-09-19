@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/whitehole-activity/whitehole-activity.iml" filepath="$PROJECT_DIR$/whitehole-activity/whitehole-activity.iml" />
       <module fileurl="file://$PROJECT_DIR$/whitehole-blog/whitehole-blog.iml" filepath="$PROJECT_DIR$/whitehole-blog/whitehole-blog.iml" />
       <module fileurl="file://$PROJECT_DIR$/whitehole-community/whitehole-community.iml" filepath="$PROJECT_DIR$/whitehole-community/whitehole-community.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whitehole-feign/whitehole-feign.iml" filepath="$PROJECT_DIR$/whitehole-feign/whitehole-feign.iml" />
       <module fileurl="file://$PROJECT_DIR$/whitehole-gateway/whitehole-gateway.iml" filepath="$PROJECT_DIR$/whitehole-gateway/whitehole-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/whitehole-hole/whitehole-hole.iml" filepath="$PROJECT_DIR$/whitehole-hole/whitehole-hole.iml" />
       <module fileurl="file://$PROJECT_DIR$/whitehole-quiz/whitehole-quiz.iml" filepath="$PROJECT_DIR$/whitehole-quiz/whitehole-quiz.iml" />
