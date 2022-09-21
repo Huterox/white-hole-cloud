@@ -18,9 +18,19 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserEntity> implements
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+//        在这里重写方法
+        String key = (String) params.get("key");
+        IPage<UserEntity> page_params = new Query<UserEntity>().getPage(params);
+        QueryWrapper<UserEntity> userEntityQueryWrapper = new QueryWrapper<>();
+        if(key!=null){
+            userEntityQueryWrapper.like("nickname",key).or().
+                    like("userid",key).or().
+                    like("username",key)
+            ;
+        }
         IPage<UserEntity> page = this.page(
-                new Query<UserEntity>().getPage(params),
-                new QueryWrapper<UserEntity>()
+                page_params,
+                userEntityQueryWrapper
         );
 
         return new PageUtils(page);

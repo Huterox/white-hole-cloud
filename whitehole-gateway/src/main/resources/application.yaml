@@ -15,48 +15,48 @@ spring:
         - id: activiy8000
           uri: lb://activiy
           predicates:
-            - Path=/activiy/**
+            - Path=/api/activiy/**
           filters:
-            - StripPrefix=1
+            - RewritePath=/api/activiy/(?<segment>.*),/$\{segment}
 
         - id: blog8050
           uri: lb://blog
           predicates:
-            - Path=/blog/**
+            - Path=/api/blog/**
           filters:
             #- 转发做拼接，去掉provide后缀，uri/** 而不是 uri/provide/**
-            - StripPrefix=1
+            - RewritePath=/api/blog/(?<segment>.*),/$\{segment}
         # 与之对于的还有 PrefixPath=/Huterox
         #  当访问 http://localhost:8762/aaa，加上前缀就变成 http://localhost:8762/Huterox/aaa
 
         - id: community8100
           uri: lb://community
           predicates:
-            - Path=/community/**
-          filter:
-            - StripPrefix=1
+            - Path=/api/community/**
+          filters:
+            - RewritePath=/api/community/(?<segment>.*),/$\{segment}
 
         - id: hole8150
           uri: lb://hole
           predicates:
-            - Path=/hole/**
-          filter:
-            - StripPrefix=1
+            - Path=/api/hole/**
+          filters:
+            - RewritePath=/api/hole/(?<segment>.*),/$\{segment}
 
 
         - id: quiz8200
           uri: lb://quiz
           predicates:
-            - Path=/quiz/**
-          filter:
-            - StripPrefix=1
+            - Path=/api/quiz/**
+          filters:
+            - RewritePath=/api/quiz/(?<segment>.*),/$\{segment}
 
         - id: user8250
           uri: lb://user
           predicates:
-            - Path=/user/**
-          filter:
-            - StripPrefix=1
+            - Path=/api/user/**
+          filters:
+            - RewritePath=/api/user/(?<segment>.*),/$\{segment}
 
 
         - id: admin_route
