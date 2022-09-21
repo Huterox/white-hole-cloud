@@ -18,11 +18,18 @@ public class LogActivityServiceImpl extends ServiceImpl<LogActivityDao, LogActiv
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+        String key = (String) params.get("key");
+        IPage<LogActivityEntity> page_params = new Query<LogActivityEntity>().getPage(params);
+        QueryWrapper<LogActivityEntity> logActivityEntityQueryWrapper = new QueryWrapper<>();
+        if(key!=null){
+            logActivityEntityQueryWrapper.like("userid",key).or().
+                    like("activityid",key).or().
+                    like("activitytitle",key);
+        }
         IPage<LogActivityEntity> page = this.page(
-                new Query<LogActivityEntity>().getPage(params),
-                new QueryWrapper<LogActivityEntity>()
+            page_params,
+            logActivityEntityQueryWrapper
         );
-
         return new PageUtils(page);
     }
 

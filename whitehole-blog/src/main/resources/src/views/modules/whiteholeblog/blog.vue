@@ -6,7 +6,7 @@
       </el-form-item>
       <el-form-item>
         <el-button @click="getDataList()">查询</el-button>
-        <el-button v-if="isAuth('whiteholeblog:blog:save')" type="primary" @click="addOrUpdateHandle()">新增</el-button>
+<!--        <el-button v-if="isAuth('whiteholeblog:blog:save')" type="primary" @click="addOrUpdateHandle()">新增</el-button>-->
         <el-button v-if="isAuth('whiteholeblog:blog:delete')" type="danger" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">批量删除</el-button>
       </el-form-item>
     </el-form>
@@ -26,80 +26,83 @@
         prop="userid"
         header-align="center"
         align="center"
-        label="">
+        label="用户id">
       </el-table-column>
       <el-table-column
         prop="blogid"
         header-align="center"
         align="center"
-        label="">
+        label="博客id">
       </el-table-column>
-      <el-table-column
-        prop="contentid"
-        header-align="center"
-        align="center"
-        label="">
-      </el-table-column>
+<!--      <el-table-column-->
+<!--        prop="contentid"-->
+<!--        header-align="center"-->
+<!--        align="center"-->
+<!--        label="">-->
+<!--      </el-table-column>-->
       <el-table-column
         prop="blogTitle"
         header-align="center"
         align="center"
-        label="">
+        label="文章标题">
       </el-table-column>
       <el-table-column
         prop="userNickname"
         header-align="center"
         align="center"
-        label="">
+        label="用户昵称">
       </el-table-column>
-      <el-table-column
-        prop="userImg"
-        header-align="center"
-        align="center"
-        label="">
-      </el-table-column>
+<!--      <el-table-column-->
+<!--        prop="userImg"-->
+<!--        header-align="center"-->
+<!--        align="center"-->
+<!--        label="">-->
+<!--      </el-table-column>-->
       <el-table-column
         prop="createTime"
         header-align="center"
         align="center"
-        label="">
+        label="编写时间">
       </el-table-column>
-      <el-table-column
-        prop="viewNumber"
-        header-align="center"
-        align="center"
-        label="">
-      </el-table-column>
-      <el-table-column
-        prop="likeNumber"
-        header-align="center"
-        align="center"
-        label="">
-      </el-table-column>
-      <el-table-column
-        prop="collectNumber"
-        header-align="center"
-        align="center"
-        label="">
-      </el-table-column>
+<!--      <el-table-column-->
+<!--        prop="viewNumber"-->
+<!--        header-align="center"-->
+<!--        align="center"-->
+<!--        label="">-->
+<!--      </el-table-column>-->
+<!--      <el-table-column-->
+<!--        prop="likeNumber"-->
+<!--        header-align="center"-->
+<!--        align="center"-->
+<!--        label="">-->
+<!--      </el-table-column>-->
+<!--      <el-table-column-->
+<!--        prop="collectNumber"-->
+<!--        header-align="center"-->
+<!--        align="center"-->
+<!--        label="">-->
+<!--      </el-table-column>-->
+
+<!--      1-正常 2-审核 3-删除 4-下架-->
       <el-table-column
         prop="status"
         header-align="center"
         align="center"
-        label="1-正常 2-审核 3-删除 4-下架">
+        label="状态">
       </el-table-column>
+<!--      1-公开 2-私密-->
       <el-table-column
         prop="level"
         header-align="center"
         align="center"
-        label="1-公开 2-私密">
+        label="权限">
       </el-table-column>
-      <el-table-column
-        prop="forkNumber"
-        header-align="center"
-        align="center"
-        label="">
-      </el-table-column>
+<!--      <el-table-column-->
+<!--        prop="forkNumber"-->
+<!--        header-align="center"-->
+<!--        align="center"-->
+<!--        label="">-->
+<!--      </el-table-column>-->
       <el-table-column
         fixed="right"
         header-align="center"

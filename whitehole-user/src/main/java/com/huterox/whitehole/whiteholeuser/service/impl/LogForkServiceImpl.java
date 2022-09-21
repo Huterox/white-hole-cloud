@@ -18,9 +18,19 @@ public class LogForkServiceImpl extends ServiceImpl<LogForkDao, LogForkEntity> i
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+
+        String key = (String) params.get("key");
+        IPage<LogForkEntity> page_params = new Query<LogForkEntity>().getPage(params);
+        QueryWrapper<LogForkEntity> logForkEntityQueryWrapper = new QueryWrapper<>();
+        if(key!=null){
+            logForkEntityQueryWrapper.like("userid",key).or().
+                    like("articleid",key).or().
+                    like("article_title",key);
+        }
+
         IPage<LogForkEntity> page = this.page(
-                new Query<LogForkEntity>().getPage(params),
-                new QueryWrapper<LogForkEntity>()
+                page_params,
+                logForkEntityQueryWrapper
         );
 
         return new PageUtils(page);

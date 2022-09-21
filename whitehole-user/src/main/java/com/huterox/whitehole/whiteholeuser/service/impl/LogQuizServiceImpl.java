@@ -18,9 +18,17 @@ public class LogQuizServiceImpl extends ServiceImpl<LogQuizDao, LogQuizEntity> i
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+        String key = (String) params.get("key");
+        IPage<LogQuizEntity> page_params = new Query<LogQuizEntity>().getPage(params);
+        QueryWrapper<LogQuizEntity> logQuizEntityQueryWrapper = new QueryWrapper<>();
+        if(key!=null){
+            logQuizEntityQueryWrapper.like("userid",key).or().
+                    like("quizid",key).or().
+                    like("quiz_title",key);
+        }
         IPage<LogQuizEntity> page = this.page(
-                new Query<LogQuizEntity>().getPage(params),
-                new QueryWrapper<LogQuizEntity>()
+                page_params,
+                logQuizEntityQueryWrapper
         );
 
         return new PageUtils(page);

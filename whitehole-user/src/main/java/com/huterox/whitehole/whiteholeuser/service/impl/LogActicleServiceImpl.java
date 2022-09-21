@@ -18,9 +18,21 @@ public class LogActicleServiceImpl extends ServiceImpl<LogActicleDao, LogActicle
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+
+        String key = ((String) params.get("key"));
+        IPage<LogActicleEntity> page_params = new Query<LogActicleEntity>().getPage(params);
+        QueryWrapper<LogActicleEntity> logActicleEntityQueryWrapper = new QueryWrapper<>();
+
+        if(key!=null){
+            logActicleEntityQueryWrapper.like("userid",key).or().
+                    like("articleid",key);
+        }
+
+
+
         IPage<LogActicleEntity> page = this.page(
-                new Query<LogActicleEntity>().getPage(params),
-                new QueryWrapper<LogActicleEntity>()
+                page_params,
+                logActicleEntityQueryWrapper
         );
 
         return new PageUtils(page);

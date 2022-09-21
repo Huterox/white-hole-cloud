@@ -18,9 +18,18 @@ public class LogFriendServiceImpl extends ServiceImpl<LogFriendDao, LogFriendEnt
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+
+        String key = (String) params.get("key");
+        IPage<LogFriendEntity> page_params = new Query<LogFriendEntity>().getPage(params);
+        QueryWrapper<LogFriendEntity> logFriendEntityQueryWrapper = new QueryWrapper<>();
+        if(key!=null){
+            logFriendEntityQueryWrapper.like("userid",key).or().
+                    like("friendid",key).or().
+                    like("friend_nickname",key);
+        }
         IPage<LogFriendEntity> page = this.page(
-                new Query<LogFriendEntity>().getPage(params),
-                new QueryWrapper<LogFriendEntity>()
+                page_params,
+                logFriendEntityQueryWrapper
         );
 
         return new PageUtils(page);

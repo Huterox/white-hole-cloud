@@ -18,9 +18,18 @@ public class LogManageCommunityServiceImpl extends ServiceImpl<LogManageCommunit
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+
+        String key = (String) params.get("key");
+        IPage<LogManageCommunityEntity> page_params = new Query<LogManageCommunityEntity>().getPage(params);
+        QueryWrapper<LogManageCommunityEntity> logManageCommunityEntityQueryWrapper = new QueryWrapper<>();
+        if(key!=null){
+            logManageCommunityEntityQueryWrapper.like("userid",key).or().
+                    like("communityid",key).or().
+                    like("community_name",key);
+        }
         IPage<LogManageCommunityEntity> page = this.page(
-                new Query<LogManageCommunityEntity>().getPage(params),
-                new QueryWrapper<LogManageCommunityEntity>()
+                page_params,
+                logManageCommunityEntityQueryWrapper
         );
 
         return new PageUtils(page);

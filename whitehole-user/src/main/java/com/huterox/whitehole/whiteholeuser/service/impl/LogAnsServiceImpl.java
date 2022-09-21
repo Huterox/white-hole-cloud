@@ -18,9 +18,19 @@ public class LogAnsServiceImpl extends ServiceImpl<LogAnsDao, LogAnsEntity> impl
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+        String key = (String) params.get("key");
+        IPage<LogAnsEntity> page_params = new Query<LogAnsEntity>().getPage(params);
+        QueryWrapper<LogAnsEntity> logAnsEntityQueryWrapper = new QueryWrapper<>();
+        if(key!=null){
+            logAnsEntityQueryWrapper.like("userid",key).or().
+                    like("ansid",key).or().
+                    like("quizid",key).or().
+                    like("quiz_title",key);
+        }
+
         IPage<LogAnsEntity> page = this.page(
-                new Query<LogAnsEntity>().getPage(params),
-                new QueryWrapper<LogAnsEntity>()
+            page_params,
+            logAnsEntityQueryWrapper
         );
 
         return new PageUtils(page);

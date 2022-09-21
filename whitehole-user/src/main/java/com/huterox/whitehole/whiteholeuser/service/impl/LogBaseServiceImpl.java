@@ -1,5 +1,6 @@
 package com.huterox.whitehole.whiteholeuser.service.impl;
 
+import com.huterox.whitehole.whiteholeuser.entity.UserEntity;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -18,9 +19,18 @@ public class LogBaseServiceImpl extends ServiceImpl<LogBaseDao, LogBaseEntity> i
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+
+        String key = (String) params.get("key");
+        IPage<LogBaseEntity> page_params = new Query<LogBaseEntity>().getPage(params);
+        QueryWrapper<LogBaseEntity> LogBaseEntityQueryWrapper = new QueryWrapper<>();
+
+        if(key!=null){
+            LogBaseEntityQueryWrapper.like("userid",key);
+        }
+
         IPage<LogBaseEntity> page = this.page(
-                new Query<LogBaseEntity>().getPage(params),
-                new QueryWrapper<LogBaseEntity>()
+                page_params,
+                LogBaseEntityQueryWrapper
         );
 
         return new PageUtils(page);
