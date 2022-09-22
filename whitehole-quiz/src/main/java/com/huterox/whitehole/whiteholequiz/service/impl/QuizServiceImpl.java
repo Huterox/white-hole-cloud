@@ -18,9 +18,18 @@ public class QuizServiceImpl extends ServiceImpl<QuizDao, QuizEntity> implements
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+        String key = (String) params.get("key");
+        IPage<QuizEntity> page_params = new Query<QuizEntity>().getPage(params);
+        QueryWrapper<QuizEntity> quizEntityQueryWrapper = new QueryWrapper<>();
+        if(key!=null){
+            quizEntityQueryWrapper.like("userid",key).or().
+                    like("quizid",key).or().
+                    like("quiz_title",key).or().
+                    like("user_nickname",key);
+        }
         IPage<QuizEntity> page = this.page(
-                new Query<QuizEntity>().getPage(params),
-                new QueryWrapper<QuizEntity>()
+                page_params,
+                quizEntityQueryWrapper
         );
 
         return new PageUtils(page);

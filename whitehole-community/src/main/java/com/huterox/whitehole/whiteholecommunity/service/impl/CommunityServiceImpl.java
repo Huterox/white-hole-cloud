@@ -18,9 +18,18 @@ public class CommunityServiceImpl extends ServiceImpl<CommunityDao, CommunityEnt
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+
+        String key = (String) params.get("key");
+        IPage<CommunityEntity> page_params = new Query<CommunityEntity>().getPage(params);
+        QueryWrapper<CommunityEntity> communityEntityQueryWrapper = new QueryWrapper<>();
+        if(key!=null){
+            communityEntityQueryWrapper.like("communityid",key).or().
+                    like("userid",key).or().
+                    like("community_title",key);
+        }
         IPage<CommunityEntity> page = this.page(
-                new Query<CommunityEntity>().getPage(params),
-                new QueryWrapper<CommunityEntity>()
+                page_params,
+                communityEntityQueryWrapper
         );
 
         return new PageUtils(page);

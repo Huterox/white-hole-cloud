@@ -18,9 +18,17 @@ public class AnsServiceImpl extends ServiceImpl<AnsDao, AnsEntity> implements An
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+        String key = (String) params.get("key");
+        IPage<AnsEntity> page_params = new Query<AnsEntity>().getPage(params);
+        QueryWrapper<AnsEntity> ansEntityQueryWrapper = new QueryWrapper<>();
+        if(key!=null){
+            ansEntityQueryWrapper.like("userid",key).or().
+                    like("quiz",key).or().
+                    like("user_nickname",key);
+        }
         IPage<AnsEntity> page = this.page(
-                new Query<AnsEntity>().getPage(params),
-                new QueryWrapper<AnsEntity>()
+                page_params,
+                ansEntityQueryWrapper
         );
 
         return new PageUtils(page);

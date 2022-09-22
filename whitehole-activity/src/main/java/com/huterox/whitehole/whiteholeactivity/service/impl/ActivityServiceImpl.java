@@ -18,9 +18,18 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityDao, ActivityEntity
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+        String key = (String) params.get("key");
+        IPage<ActivityEntity> page_params = new Query<ActivityEntity>().getPage(params);
+        QueryWrapper<ActivityEntity> activityEntityQueryWrapper = new QueryWrapper<>();
+        if(key!=null){
+            activityEntityQueryWrapper.like("activityid",key).or().
+                    like("activity_title",key).or().
+                    like("actorid1",key).or().
+                    like("actor1_nickname",key);
+        }
         IPage<ActivityEntity> page = this.page(
-                new Query<ActivityEntity>().getPage(params),
-                new QueryWrapper<ActivityEntity>()
+                page_params,
+                activityEntityQueryWrapper
         );
 
         return new PageUtils(page);

@@ -18,9 +18,20 @@ public class ForkServiceImpl extends ServiceImpl<ForkDao, ForkEntity> implements
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+
+        String key = (String) params.get("key");
+        IPage<ForkEntity> page_params = new Query<ForkEntity>().getPage(params);
+        QueryWrapper<ForkEntity> forkEntityQueryWrapper = new QueryWrapper<>();
+        if(key!=null){
+            forkEntityQueryWrapper.like("userid",key).or().
+                    like("blogid",key).or().
+                    like("blog_userid",key).or().
+                    like("blog_title",key).or().
+                    like("blog_user_nickname",key);
+        }
         IPage<ForkEntity> page = this.page(
-                new Query<ForkEntity>().getPage(params),
-                new QueryWrapper<ForkEntity>()
+                page_params,
+                forkEntityQueryWrapper
         );
 
         return new PageUtils(page);

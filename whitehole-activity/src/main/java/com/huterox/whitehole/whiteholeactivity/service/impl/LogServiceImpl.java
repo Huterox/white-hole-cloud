@@ -18,9 +18,16 @@ public class LogServiceImpl extends ServiceImpl<LogDao, LogEntity> implements Lo
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+        String key = (String) params.get("key");
+        IPage<LogEntity> page_params = new Query<LogEntity>().getPage(params);
+        QueryWrapper<LogEntity> logEntityQueryWrapper = new QueryWrapper<>();
+        if(key!=null){
+            logEntityQueryWrapper.like("actorid",key).or().
+                    like("activityid",key);
+        }
         IPage<LogEntity> page = this.page(
-                new Query<LogEntity>().getPage(params),
-                new QueryWrapper<LogEntity>()
+                page_params,
+                logEntityQueryWrapper
         );
 
         return new PageUtils(page);
