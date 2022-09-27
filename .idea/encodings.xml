@@ -10,10 +10,12 @@
     <file url="file://$PROJECT_DIR$/whitehole-blog/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/whitehole-community/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/whitehole-community/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/whitehole-feign/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/whitehole-gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/whitehole-hole/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/whitehole-openfeign/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/whitehole-quiz/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/whitehole-third-part/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/whitehole-third-part/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/whitehole-user/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/whitehole-user/src/main/resources" charset="UTF-8" />
   </component>

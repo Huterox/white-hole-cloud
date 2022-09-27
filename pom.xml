@@ -22,8 +22,7 @@
         <module>renren-generator</module>
         <module>whiteholo-common</module>
         <module>whitehole-gateway</module>
-        <module>whitehole-feign</module>
-        <module>whitehole-feign</module>
+        <module>whitehole-openfeign</module>
     </modules>
 
 </project>

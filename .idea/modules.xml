@@ -10,7 +10,9 @@
       <module fileurl="file://$PROJECT_DIR$/whitehole-feign/whitehole-feign.iml" filepath="$PROJECT_DIR$/whitehole-feign/whitehole-feign.iml" />
       <module fileurl="file://$PROJECT_DIR$/whitehole-gateway/whitehole-gateway.iml" filepath="$PROJECT_DIR$/whitehole-gateway/whitehole-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/whitehole-hole/whitehole-hole.iml" filepath="$PROJECT_DIR$/whitehole-hole/whitehole-hole.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whitehole-openfeign/whitehole-openfeign.iml" filepath="$PROJECT_DIR$/whitehole-openfeign/whitehole-openfeign.iml" />
       <module fileurl="file://$PROJECT_DIR$/whitehole-quiz/whitehole-quiz.iml" filepath="$PROJECT_DIR$/whitehole-quiz/whitehole-quiz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whitehole-third-part/whitehole-third-part.iml" filepath="$PROJECT_DIR$/whitehole-third-part/whitehole-third-part.iml" />
       <module fileurl="file://$PROJECT_DIR$/whitehole-user/whitehole-user.iml" filepath="$PROJECT_DIR$/whitehole-user/whitehole-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/whiteholecloud0.7.iml" filepath="$PROJECT_DIR$/.idea/whiteholecloud0.7.iml" />
       <module fileurl="file://$PROJECT_DIR$/whiteholo-common/whiteholo-common.iml" filepath="$PROJECT_DIR$/whiteholo-common/whiteholo-common.iml" />

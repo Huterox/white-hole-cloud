@@ -58,6 +58,15 @@ spring:
           filters:
             - RewritePath=/api/user/(?<segment>.*),/$\{segment}
 
+        - id: third-part30000
+          uri: lb://third-part
+          predicates:
+            - Path=/api/third-part/**
+          filters:
+            - RewritePath=/api/third-part/(?<segment>.*),/$\{segment}
+
+
+
 
         - id: admin_route
           uri: lb://renren-fast  # 网关负载均衡的发送到renren-fast

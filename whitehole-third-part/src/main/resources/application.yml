@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: third-part
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        service: third-part
+
+    alicloud:
+      access-key: LTAI5tQHt7cYofZC8V8NCc7L
+      secret-key: OFK5n10rjns4IGuW73ADeTucS9Rxmz
+      oss:
+        endpoint: oss-cn-shanghai.aliyuncs.com
+        bucket: whiteholecloud-dev
+

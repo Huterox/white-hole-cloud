@@ -7,17 +7,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="whitehole-feign" />
-        <module name="whiteholo-common" />
-        <module name="whitehole-community" />
         <module name="whitehole-gateway" />
+        <module name="whitehole-third-part" />
         <module name="whitehole-user" />
-        <module name="renren-fast" />
-        <module name="whitehole-blog" />
-        <module name="whitehole-hole" />
-        <module name="whitehole-quiz" />
         <module name="renren-generator" />
         <module name="whitehole-activity" />
+        <module name="whitehole-feign" />
+        <module name="whitehole-openfeign" />
+        <module name="whiteholo-common" />
+        <module name="whitehole-community" />
+        <module name="renren-fast" />
+        <module name="whitehole-hole" />
+        <module name="whitehole-blog" />
+        <module name="whitehole-quiz" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -29,7 +31,9 @@
       <module name="whitehole-feign" target="1.8" />
       <module name="whitehole-gateway" target="1.8" />
       <module name="whitehole-hole" target="1.8" />
+      <module name="whitehole-openfeign" target="1.8" />
       <module name="whitehole-quiz" target="1.8" />
+      <module name="whitehole-third-part" target="1.8" />
       <module name="whitehole-user" target="1.8" />
       <module name="whiteholecloud0.7" target="1.5" />
       <module name="whiteholegateway" target="1.8" />
@@ -46,7 +50,9 @@
       <module name="whitehole-feign" options="-parameters" />
       <module name="whitehole-gateway" options="-parameters" />
       <module name="whitehole-hole" options="-parameters" />
+      <module name="whitehole-openfeign" options="-parameters" />
       <module name="whitehole-quiz" options="-parameters" />
+      <module name="whitehole-third-part" options="-parameters" />
       <module name="whitehole-user" options="-parameters" />
       <module name="whiteholegateway" options="-parameters" />
     </option>
