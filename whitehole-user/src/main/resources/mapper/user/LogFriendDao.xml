@@ -4,7 +4,7 @@
 <mapper namespace="com.huterox.whitehole.user.dao.LogFriendDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.huterox.whitehole.whiteholeuser.entity.LogFriendEntity" id="logFriendMap">
+    <resultMap type="com.huterox.whitehole.whiteholeuser.entity.base.LogFriendEntity" id="logFriendMap">
         <result property="userid" column="userid"/>
         <result property="friendid" column="friendid"/>
         <result property="creatTime" column="creat_time"/>

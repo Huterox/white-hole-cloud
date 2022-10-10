@@ -1,6 +1,6 @@
 package com.huterox.whitehole.whiteholeuser.dao;
 
-import com.huterox.whitehole.whiteholeuser.entity.LogFriendEntity;
+import com.huterox.whitehole.whiteholeuser.entity.base.LogFriendEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 

@@ -4,7 +4,7 @@
 <mapper namespace="com.huterox.whitehole.user.dao.LogAnsDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.huterox.whitehole.whiteholeuser.entity.LogAnsEntity" id="logAnsMap">
+    <resultMap type="com.huterox.whitehole.whiteholeuser.entity.base.LogAnsEntity" id="logAnsMap">
         <result property="userid" column="userid"/>
         <result property="ansid" column="ansid"/>
         <result property="quizid" column="quizid"/>

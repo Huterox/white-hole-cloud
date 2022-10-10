@@ -10,11 +10,13 @@
         <module name="whitehole-gateway" />
         <module name="whitehole-third-part" />
         <module name="whitehole-user" />
+        <module name="whitehole-search" />
         <module name="renren-generator" />
         <module name="whitehole-activity" />
         <module name="whitehole-feign" />
         <module name="whitehole-openfeign" />
         <module name="whiteholo-common" />
+        <module name="whitehole-autoserver" />
         <module name="whitehole-community" />
         <module name="renren-fast" />
         <module name="whitehole-hole" />
@@ -26,6 +28,7 @@
       <module name="renren-fast" target="1.8" />
       <module name="renren-generator" target="1.8" />
       <module name="whitehole-activity" target="1.8" />
+      <module name="whitehole-autoserver" target="1.8" />
       <module name="whitehole-blog" target="1.8" />
       <module name="whitehole-community" target="1.8" />
       <module name="whitehole-feign" target="1.8" />
@@ -33,6 +36,7 @@
       <module name="whitehole-hole" target="1.8" />
       <module name="whitehole-openfeign" target="1.8" />
       <module name="whitehole-quiz" target="1.8" />
+      <module name="whitehole-search" target="1.8" />
       <module name="whitehole-third-part" target="1.8" />
       <module name="whitehole-user" target="1.8" />
       <module name="whiteholecloud0.7" target="1.5" />
@@ -45,6 +49,7 @@
       <module name="renren-fast" options="-parameters" />
       <module name="renren-generator" options="-parameters" />
       <module name="whitehole-activity" options="-parameters" />
+      <module name="whitehole-autoserver" options="-parameters" />
       <module name="whitehole-blog" options="-parameters" />
       <module name="whitehole-community" options="-parameters" />
       <module name="whitehole-feign" options="-parameters" />
@@ -52,6 +57,7 @@
       <module name="whitehole-hole" options="-parameters" />
       <module name="whitehole-openfeign" options="-parameters" />
       <module name="whitehole-quiz" options="-parameters" />
+      <module name="whitehole-search" options="-parameters" />
       <module name="whitehole-third-part" options="-parameters" />
       <module name="whitehole-user" options="-parameters" />
       <module name="whiteholegateway" options="-parameters" />

@@ -4,7 +4,7 @@
 <mapper namespace="com.huterox.whitehole.user.dao.CommunityJoinDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.huterox.whitehole.whiteholeuser.entity.CommunityJoinEntity" id="communityJoinMap">
+    <resultMap type="com.huterox.whitehole.whiteholeuser.entity.base.CommunityJoinEntity" id="communityJoinMap">
         <result property="userid" column="userid"/>
         <result property="communityid" column="communityid"/>
         <result property="communityUserid" column="community_userid"/>

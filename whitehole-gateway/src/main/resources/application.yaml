@@ -58,6 +58,20 @@ spring:
           filters:
             - RewritePath=/api/user/(?<segment>.*),/$\{segment}
 
+        - id: search8600
+          uri: lb://search
+          predicates:
+            - Path=/api/search/**
+          filters:
+            - RewritePath=/api/search/(?<segment>.*),/$\{segment}
+
+        - id: autoserver8900
+          uri: lb://autoserver
+          predicates:
+            - Path=/api/autoserver/**
+          filters:
+            - RewritePath=/api/autoserver/(?<segment>.*),/$\{segment}
+
         - id: third-part30000
           uri: lb://third-part
           predicates:

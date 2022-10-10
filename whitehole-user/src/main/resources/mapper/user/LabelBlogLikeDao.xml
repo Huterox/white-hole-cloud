@@ -4,7 +4,7 @@
 <mapper namespace="com.huterox.whitehole.user.dao.LabelBlogLikeDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.huterox.whitehole.whiteholeuser.entity.LabelBlogLikeEntity" id="labelBlogLikeMap">
+    <resultMap type="com.huterox.whitehole.whiteholeuser.entity.base.LabelBlogLikeEntity" id="labelBlogLikeMap">
         <result property="userid" column="userid"/>
         <result property="label1" column="label1"/>
         <result property="label2" column="label2"/>

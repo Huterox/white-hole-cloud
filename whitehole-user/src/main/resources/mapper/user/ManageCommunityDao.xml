@@ -4,7 +4,7 @@
 <mapper namespace="com.huterox.whitehole.user.dao.ManageCommunityDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.huterox.whitehole.whiteholeuser.entity.ManageCommunityEntity" id="manageCommunityMap">
+    <resultMap type="com.huterox.whitehole.whiteholeuser.entity.base.ManageCommunityEntity" id="manageCommunityMap">
         <result property="userid" column="userid"/>
         <result property="communityid" column="communityid"/>
         <result property="createTime" column="create_time"/>

@@ -4,7 +4,7 @@
 <mapper namespace="com.huterox.whitehole.user.dao.FriendDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.huterox.whitehole.whiteholeuser.entity.FriendEntity" id="friendMap">
+    <resultMap type="com.huterox.whitehole.whiteholeuser.entity.base.FriendEntity" id="friendMap">
         <result property="myUserid" column="my_userid"/>
         <result property="friendUserid" column="friend_userid"/>
         <result property="friendName" column="friend_name"/>

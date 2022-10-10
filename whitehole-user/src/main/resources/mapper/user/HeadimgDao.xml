@@ -4,7 +4,7 @@
 <mapper namespace="com.huterox.whitehole.user.dao.HeadimgDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.huterox.whitehole.whiteholeuser.entity.HeadimgEntity" id="headimgMap">
+    <resultMap type="com.huterox.whitehole.whiteholeuser.entity.base.HeadimgEntity" id="headimgMap">
         <result property="imgid" column="imgid"/>
         <result property="imgpath" column="imgpath"/>
         <result property="userid" column="userid"/>

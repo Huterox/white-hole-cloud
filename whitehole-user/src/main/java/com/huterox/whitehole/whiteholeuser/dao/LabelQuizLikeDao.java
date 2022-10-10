@@ -1,6 +1,6 @@
 package com.huterox.whitehole.whiteholeuser.dao;
 
-import com.huterox.whitehole.whiteholeuser.entity.LabelQuizLikeEntity;
+import com.huterox.whitehole.whiteholeuser.entity.base.LabelQuizLikeEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 

@@ -3,6 +3,8 @@ server:
 
 # mysql
 spring:
+  application:
+    name: activity
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     #MySQL配置
@@ -40,8 +42,7 @@ spring:
       discovery:
         server-addr: 127.0.0.1:8848
         service: activity
-    application:
-      name: activity
+
 
 #mongodb:
 #  host: localhost

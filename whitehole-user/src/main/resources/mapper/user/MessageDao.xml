@@ -4,7 +4,7 @@
 <mapper namespace="com.huterox.whitehole.user.dao.MessageDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.huterox.whitehole.whiteholeuser.entity.MessageEntity" id="messageMap">
+    <resultMap type="com.huterox.whitehole.whiteholeuser.entity.base.MessageEntity" id="messageMap">
         <result property="userid" column="userid"/>
         <result property="type" column="type"/>
         <result property="messageid" column="messageid"/>

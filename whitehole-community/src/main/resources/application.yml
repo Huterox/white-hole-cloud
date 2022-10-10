@@ -56,13 +56,3 @@ mybatis-plus:
   mapperLocations: classpath:mapper/**/*.xml
 
 
-pagehelper:
-  reasonable: true
-  supportMethodsArguments: true
-  params: count=countSql
-
-
-#指定数据库，可选值有【mysql、oracle、sqlserver、postgresql、mongodb】
-renren:
-  database: mysql
-

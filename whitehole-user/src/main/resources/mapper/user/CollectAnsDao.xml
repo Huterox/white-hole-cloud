@@ -4,7 +4,7 @@
 <mapper namespace="com.huterox.whitehole.user.dao.CollectAnsDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.huterox.whitehole.whiteholeuser.entity.CollectAnsEntity" id="collectAnsMap">
+    <resultMap type="com.huterox.whitehole.whiteholeuser.entity.base.CollectAnsEntity" id="collectAnsMap">
         <result property="userid" column="userid"/>
         <result property="ansid" column="ansid"/>
         <result property="ansInfo" column="ans_info"/>

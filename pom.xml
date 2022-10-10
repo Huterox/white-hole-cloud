@@ -23,6 +23,9 @@
         <module>whiteholo-common</module>
         <module>whitehole-gateway</module>
         <module>whitehole-openfeign</module>
+        <module>whitehole-search</module>
+        <module>whitehole-third-part</module>
+        <module>whitehole-autoserver</module>
     </modules>
 
 </project>

@@ -10,7 +10,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @MapperScan("com.huterox.whitehole.whiteholeblog.dao")
 @EnableDiscoveryClient
-@EnableFeignClients(basePackages = "com.huterox.whitehole.whiteholeblog.feign")
+@EnableFeignClients(basePackages = "com.huterox.whiteholecould.feign")
 @SpringBootApplication
 public class WhiteholeBlogApplication {
 

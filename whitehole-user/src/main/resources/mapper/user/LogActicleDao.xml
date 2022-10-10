@@ -4,7 +4,7 @@
 <mapper namespace="com.huterox.whitehole.user.dao.LogActicleDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.huterox.whitehole.whiteholeuser.entity.LogActicleEntity" id="logActicleMap">
+    <resultMap type="com.huterox.whitehole.whiteholeuser.entity.base.LogActicleEntity" id="logActicleMap">
         <result property="userid" column="userid"/>
         <result property="articleid" column="articleid"/>
         <result property="action" column="action"/>

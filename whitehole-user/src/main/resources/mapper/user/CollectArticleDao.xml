@@ -4,7 +4,7 @@
 <mapper namespace="com.huterox.whitehole.user.dao.CollectArticleDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.huterox.whitehole.whiteholeuser.entity.CollectArticleEntity" id="collectArticleMap">
+    <resultMap type="com.huterox.whitehole.whiteholeuser.entity.base.CollectArticleEntity" id="collectArticleMap">
         <result property="userid" column="userid"/>
         <result property="articleid" column="articleid"/>
         <result property="articleTitle" column="article_title"/>
