@@ -1,7 +1,8 @@
 package com.huterox.whitehole.whiteholeblog.dao;
 
-import com.huterox.whitehole.whiteholeblog.entity.ComComentEntity;
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.huterox.whiteholecould.entity.blog.ComComentEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

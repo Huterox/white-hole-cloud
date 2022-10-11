@@ -69,8 +69,10 @@ public class BlogEntity implements Serializable {
 	 */
 	private Integer level;
 	/**
-	 * 
+	 * 博文的基本信息
 	 */
+	private String info;
 	private Integer forkNumber;
+	private String blogimg;
 
 }

@@ -1,7 +1,8 @@
 package com.huterox.whitehole.whiteholeuser.utils;
 
 
-import com.huterox.whitehole.whiteholeuser.entity.base.UserEntity;
+
+import com.huterox.whiteholecould.entity.user.UserEntity;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

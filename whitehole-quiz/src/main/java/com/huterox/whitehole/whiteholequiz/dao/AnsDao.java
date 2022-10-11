@@ -1,7 +1,7 @@
 package com.huterox.whitehole.whiteholequiz.dao;
 
-import com.huterox.whitehole.whiteholequiz.entity.AnsEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.huterox.whiteholecould.entity.quiz.AnsEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

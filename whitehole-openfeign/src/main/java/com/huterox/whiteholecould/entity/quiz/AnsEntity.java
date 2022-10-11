@@ -1,5 +1,6 @@
 package com.huterox.whiteholecould.entity.quiz;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -32,7 +33,7 @@ public class AnsEntity implements Serializable {
 	 */
 	private Date creatTime;
 	/**
-	 * 
+	 * 问题的简略信息，摘要
 	 */
 	private String context;
 	/**
@@ -60,5 +61,10 @@ public class AnsEntity implements Serializable {
 	 */
 	@TableId
 	private Long ansid;
+	//问题回答的状态
+	private Integer status;
+	//问题的标题
+	@TableField("quizTitle")
+	private String quizTitle;
 
 }

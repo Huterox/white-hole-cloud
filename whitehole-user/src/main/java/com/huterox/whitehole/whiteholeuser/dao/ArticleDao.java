@@ -1,7 +1,7 @@
 package com.huterox.whitehole.whiteholeuser.dao;
 
-import com.huterox.whitehole.whiteholeuser.entity.base.ArticleEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.huterox.whiteholecould.entity.user.ArticleEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

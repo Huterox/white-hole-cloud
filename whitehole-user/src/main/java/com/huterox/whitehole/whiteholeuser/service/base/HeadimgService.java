@@ -2,7 +2,7 @@ package com.huterox.whitehole.whiteholeuser.service.base;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.huterox.common.utils.PageUtils;
-import com.huterox.whitehole.whiteholeuser.entity.base.HeadimgEntity;
+import com.huterox.whiteholecould.entity.user.HeadimgEntity;
 
 import java.util.Map;
 

@@ -77,6 +77,6 @@ public class UserEntity implements Serializable {
 	/**
 	 * 用户加入社区的时间，格式为2022-9-12
 	 */
-	private Date creatTime;
+	private String creatTime;
 
 }

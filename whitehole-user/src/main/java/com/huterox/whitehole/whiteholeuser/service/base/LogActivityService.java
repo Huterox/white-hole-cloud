@@ -2,7 +2,7 @@ package com.huterox.whitehole.whiteholeuser.service.base;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.huterox.common.utils.PageUtils;
-import com.huterox.whitehole.whiteholeuser.entity.base.LogActivityEntity;
+import com.huterox.whiteholecould.entity.user.LogActivityEntity;
 
 import java.util.Map;
 

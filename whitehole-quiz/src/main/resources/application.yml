@@ -41,6 +41,13 @@ spring:
       discovery:
         server-addr: 127.0.0.1:8848
         service: quiz
+    alicloud:
+      access-key: LTAI5tQHt7cYofZC8V8NCc7L
+      secret-key: OFK5n10rjns4IGuW73ADeTucS9Rxmz
+      oss:
+        endpoint: oss-cn-shanghai.aliyuncs.com
+        bucket: whiteholecloud-dev
+
 
 
 #mongodb:
@@ -54,6 +61,8 @@ spring:
 
 mybatis-plus:
   mapperLocations: classpath:mapper/**/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启sql日志
 
 
 pagehelper:

@@ -2,7 +2,6 @@ package com.huterox.whitehole.whiteholeuser.service.surface.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.huterox.common.utils.R;
-import com.huterox.whitehole.whiteholeuser.entity.base.UserEntity;
 import com.huterox.whitehole.whiteholeuser.entity.surface.login.LoginEntity;
 import com.huterox.whitehole.whiteholeuser.exception.BizCodeEnum;
 import com.huterox.whitehole.whiteholeuser.service.base.UserService;
@@ -11,6 +10,7 @@ import com.huterox.whitehole.whiteholeuser.utils.JwtTokenUtil;
 import com.huterox.whitehole.whiteholeuser.utils.RedisTransKey;
 import com.huterox.whitehole.whiteholeuser.utils.RedisUtils;
 import com.huterox.whitehole.whiteholeuser.utils.SecurityUtils;
+import com.huterox.whiteholecould.entity.user.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

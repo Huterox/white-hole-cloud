@@ -18,6 +18,12 @@
         <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
     </properties>
     <dependencies>
+        <!--        whitehole 集中管理的feign包-->
+        <dependency>
+            <groupId>feign</groupId>
+            <artifactId>whitehole-openfeign</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

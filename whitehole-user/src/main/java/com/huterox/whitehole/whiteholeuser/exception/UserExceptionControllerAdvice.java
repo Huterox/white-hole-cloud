@@ -29,7 +29,7 @@ public class UserExceptionControllerAdvice {
 
     @ExceptionHandler(value = Throwable.class)
     public R handleException(Throwable throwable){
-
+        //拦截所有的异常
         log.error("错误：",throwable);
         return R.error(BizCodeEnum.UNKNOW_EXCEPTION.getCode(),BizCodeEnum.UNKNOW_EXCEPTION.getMsg());
     }

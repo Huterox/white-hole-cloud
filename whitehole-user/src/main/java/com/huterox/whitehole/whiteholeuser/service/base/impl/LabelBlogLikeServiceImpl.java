@@ -1,5 +1,6 @@
 package com.huterox.whitehole.whiteholeuser.service.base.impl;
 
+import com.huterox.whiteholecould.entity.user.LabelBlogLikeEntity;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -9,7 +10,6 @@ import com.huterox.common.utils.PageUtils;
 import com.huterox.common.utils.Query;
 
 import com.huterox.whitehole.whiteholeuser.dao.LabelBlogLikeDao;
-import com.huterox.whitehole.whiteholeuser.entity.base.LabelBlogLikeEntity;
 import com.huterox.whitehole.whiteholeuser.service.base.LabelBlogLikeService;
 
 
