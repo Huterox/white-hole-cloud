@@ -14,6 +14,10 @@ public enum BizCodeEnum {
     REPARATION_GO(10008,"请重新操作"),
     NO_SUCHUSER(10009,"该用户不存在"),
     BAD_PUTDATA(10010,"信息提交错误，请重新检查"),
+    NOT_LOGIN(10011,"用户未登录"),
+    BAD_LOGIN_PARAMS(10012,"请求异常！触发5次以上账号将保护性封禁"),
+    NUNKNOW_LGINTYPE(10013,"平台识别异常"),
+    BAD_TOKEN(10014,"token校验失败"),
     SUCCESSFUL(200,"successful");
 
     private int code;

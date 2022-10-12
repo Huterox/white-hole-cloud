@@ -27,6 +27,24 @@ public class UserExceptionControllerAdvice {
         return R.error(BizCodeEnum.VAILD_EXCEPTION.getCode(),BizCodeEnum.VAILD_EXCEPTION.getMsg()).put("data",errorMap);
     }
 
+    @ExceptionHandler(value= NotLoginException.class)
+    public R notLoginException(Throwable throwable){
+        log.error("错误：",throwable);
+        return R.error(BizCodeEnum.NOT_LOGIN.getCode(),BizCodeEnum.NOT_LOGIN.getMsg());
+    }
+
+    @ExceptionHandler(value= BadLoginParamsException.class)
+    public R badLoginParamsException(Throwable throwable){
+        log.error("错误：",throwable);
+        return R.error(BizCodeEnum.BAD_LOGIN_PARAMS.getCode(),BizCodeEnum.BAD_LOGIN_PARAMS.getMsg());
+    }
+    @ExceptionHandler(value= BadLoginTokenException.class)
+    public R badLoginTokenException(Throwable throwable){
+        log.error("错误：",throwable);
+        return R.error(BizCodeEnum.BAD_TOKEN.getCode(),BizCodeEnum.BAD_TOKEN.getMsg());
+    }
+
+
     @ExceptionHandler(value = Throwable.class)
     public R handleException(Throwable throwable){
         //拦截所有的异常

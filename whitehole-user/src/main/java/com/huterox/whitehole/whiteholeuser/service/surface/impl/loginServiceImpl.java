@@ -3,21 +3,17 @@ package com.huterox.whitehole.whiteholeuser.service.surface.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.huterox.common.utils.R;
 import com.huterox.whitehole.whiteholeuser.entity.surface.login.LoginEntity;
+import com.huterox.whitehole.whiteholeuser.entity.surface.login.LoginToken;
 import com.huterox.whitehole.whiteholeuser.exception.BizCodeEnum;
 import com.huterox.whitehole.whiteholeuser.service.base.UserService;
 import com.huterox.whitehole.whiteholeuser.service.surface.LoginService;
-import com.huterox.whitehole.whiteholeuser.utils.JwtTokenUtil;
-import com.huterox.whitehole.whiteholeuser.utils.RedisTransKey;
-import com.huterox.whitehole.whiteholeuser.utils.RedisUtils;
-import com.huterox.whitehole.whiteholeuser.utils.SecurityUtils;
+import com.huterox.whitehole.whiteholeuser.utils.*;
 import com.huterox.whiteholecould.entity.user.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
-
-
 @Service
 public class loginServiceImpl implements LoginService {
 
@@ -41,12 +37,29 @@ public class loginServiceImpl implements LoginService {
         );
         if(User!=null){
             if(SecurityUtils.matchesPassword(password,User.getPassword())){
-                //登录成功，签发token
+                //登录成功，签发token,按照平台类型去签发不同的Token
                 String token = JwtTokenUtil.generateToken(User);
-                redisUtils.set(RedisTransKey.setTokenKey(username),token,7, TimeUnit.DAYS);
-                return Objects.requireNonNull(R.ok(BizCodeEnum.SUCCESSFUL.getMsg())
-                                .put("loginToken", token))
-                                .put("userid",User.getUserid());
+                //登录成功后，将userid--->token存redis，便于做登录验证
+                String ipAddr = GetIPAddrUtils.GetIPAddr();
+                if(entity.getType().equals(LoginType.PcType)){
+                    LoginToken loginToken = new LoginToken(token,null,ipAddr);
+                    redisUtils.set(RedisTransKey.setTokenKey(User.getUserid()+":"+LoginType.PcType)
+                            ,loginToken,7, TimeUnit.DAYS
+                    );
+                    return Objects.requireNonNull(R.ok(BizCodeEnum.SUCCESSFUL.getMsg())
+                                    .put(LoginType.PcLoginToken, token))
+                                    .put("userid",User.getUserid());
+                }else if (entity.getType().equals(LoginType.MobileType)){
+                    LoginToken loginToken = new LoginToken(null,token,ipAddr);
+                    redisUtils.set(RedisTransKey.setTokenKey(User.getUserid()+":"+LoginType.MobileType)
+                            ,loginToken,7, TimeUnit.DAYS
+                    );
+                    return Objects.requireNonNull(R.ok(BizCodeEnum.SUCCESSFUL.getMsg())
+                                    .put(LoginType.PcLoginToken, token))
+                                    .put("userid",User.getUserid());
+                } else {
+                    return R.error(BizCodeEnum.NUNKNOW_LGINTYPE.getCode(),BizCodeEnum.NUNKNOW_LGINTYPE.getMsg());
+                }
             }else {
                 return R.error(BizCodeEnum.BAD_PUTDATA.getCode(),BizCodeEnum.BAD_PUTDATA.getMsg());
             }

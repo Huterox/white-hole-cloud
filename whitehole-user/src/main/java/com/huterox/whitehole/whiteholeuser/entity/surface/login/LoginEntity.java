@@ -18,5 +18,8 @@ public class LoginEntity {
     @NotEmpty(message = "用户密码不能为空")
     @Length(min = 6,max = 18,message="密码必须是6-18位")
     private String password;
+//    PC,mobile
+    @NotEmpty(message = "设备类型不能为空")
+    private String type;
 
 }
