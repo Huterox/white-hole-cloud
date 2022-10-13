@@ -3,6 +3,7 @@ package com.huterox.whitehole.whiteholeuser.controller.surface;
 
 import com.huterox.common.holeAnnotation.NeedLogin;
 import com.huterox.common.utils.R;
+import com.huterox.whitehole.whiteholeuser.entity.surface.userspace.UserSpaceInfoListQueryEntity;
 import com.huterox.whitehole.whiteholeuser.service.surface.UserSpaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,13 @@ public class UserSpaceController {
     public R userIsLogin(@RequestParam(value="userid") String userid){
         //只是用来验证用户有没有登录的，也就是校验本地的token信息，如果不对用户将重新登录
         return userSpaceService.userIsLogin(userid);
+    }
+
+    @RequestMapping("/allArticle")
+    @NeedLogin
+    public R userAllArticle(UserSpaceInfoListQueryEntity entity){
+        //查询用户所有的博客的接口，这个是个人页面使用的接口，所以必须验证
+        return userSpaceService.userAllArticle(entity);
     }
 
 

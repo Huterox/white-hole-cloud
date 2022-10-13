@@ -1,6 +1,7 @@
 package com.huterox.whitehole.whiteholeblog.service.base.impl;
 
 import com.huterox.whiteholecould.entity.blog.BlogEntity;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -58,7 +59,8 @@ public class BlogServiceImpl extends ServiceImpl<BlogDao, BlogEntity> implements
 
                 }else if(accurate.equals("many")){
                     Object accurate_query = params.get("accurate_query");
-                    blogEntityQueryWrapper = (QueryWrapper<BlogEntity>) accurate_query;
+                    System.out.println("===========================================");
+                    BeanUtils.copyProperties(accurate_query,blogEntityQueryWrapper);
                 }
             }
         }
@@ -69,5 +71,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogDao, BlogEntity> implements
 
         return new PageUtils(page);
     }
+
+
 
 }
