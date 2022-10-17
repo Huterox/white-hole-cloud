@@ -11,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/whitehole-feign/whitehole-feign.iml" filepath="$PROJECT_DIR$/whitehole-feign/whitehole-feign.iml" />
       <module fileurl="file://$PROJECT_DIR$/whitehole-gateway/whitehole-gateway.iml" filepath="$PROJECT_DIR$/whitehole-gateway/whitehole-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/whitehole-hole/whitehole-hole.iml" filepath="$PROJECT_DIR$/whitehole-hole/whitehole-hole.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whitehole-message/whitehole-message.iml" filepath="$PROJECT_DIR$/whitehole-message/whitehole-message.iml" />
       <module fileurl="file://$PROJECT_DIR$/whitehole-openfeign/whitehole-openfeign.iml" filepath="$PROJECT_DIR$/whitehole-openfeign/whitehole-openfeign.iml" />
       <module fileurl="file://$PROJECT_DIR$/whitehole-quiz/whitehole-quiz.iml" filepath="$PROJECT_DIR$/whitehole-quiz/whitehole-quiz.iml" />
       <module fileurl="file://$PROJECT_DIR$/whitehole-search/whitehole-search.iml" filepath="$PROJECT_DIR$/whitehole-search/whitehole-search.iml" />

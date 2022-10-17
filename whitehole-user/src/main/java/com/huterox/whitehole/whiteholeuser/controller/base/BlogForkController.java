@@ -37,7 +37,6 @@ public class BlogForkController {
     //RequiresPermissions("user:blogfork:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = blogForkService.queryPage(params);
-
         return R.ok().put("page", page);
     }
 

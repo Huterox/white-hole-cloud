@@ -72,12 +72,20 @@ spring:
           filters:
             - RewritePath=/api/autoserver/(?<segment>.*),/$\{segment}
 
+        - id: message8350
+          uri: lb://message
+          predicates:
+            - Path=/api/message/**
+          filters:
+            - RewritePath=/api/message/(?<segment>.*),/$\{segment}
+
         - id: third-part30000
           uri: lb://third-part
           predicates:
             - Path=/api/third-part/**
           filters:
             - RewritePath=/api/third-part/(?<segment>.*),/$\{segment}
+
 
 
 

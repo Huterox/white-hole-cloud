@@ -59,7 +59,6 @@ public class BlogServiceImpl extends ServiceImpl<BlogDao, BlogEntity> implements
 
                 }else if(accurate.equals("many")){
                     Object accurate_query = params.get("accurate_query");
-                    System.out.println("===========================================");
                     BeanUtils.copyProperties(accurate_query,blogEntityQueryWrapper);
                 }
             }

@@ -26,6 +26,7 @@
         <module>whitehole-search</module>
         <module>whitehole-third-part</module>
         <module>whitehole-autoserver</module>
+        <module>whitehole-message</module>
     </modules>
 
 </project>

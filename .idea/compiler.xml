@@ -17,6 +17,7 @@
         <module name="whitehole-openfeign" />
         <module name="whiteholo-common" />
         <module name="whitehole-autoserver" />
+        <module name="whitehole-message" />
         <module name="whitehole-community" />
         <module name="renren-fast" />
         <module name="whitehole-hole" />
@@ -34,6 +35,7 @@
       <module name="whitehole-feign" target="1.8" />
       <module name="whitehole-gateway" target="1.8" />
       <module name="whitehole-hole" target="1.8" />
+      <module name="whitehole-message" target="1.8" />
       <module name="whitehole-openfeign" target="1.8" />
       <module name="whitehole-quiz" target="1.8" />
       <module name="whitehole-search" target="1.8" />
@@ -55,6 +57,7 @@
       <module name="whitehole-feign" options="-parameters" />
       <module name="whitehole-gateway" options="-parameters" />
       <module name="whitehole-hole" options="-parameters" />
+      <module name="whitehole-message" options="-parameters" />
       <module name="whitehole-openfeign" options="-parameters" />
       <module name="whitehole-quiz" options="-parameters" />
       <module name="whitehole-search" options="-parameters" />

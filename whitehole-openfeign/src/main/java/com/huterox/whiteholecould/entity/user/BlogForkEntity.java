@@ -45,4 +45,6 @@ public class BlogForkEntity implements Serializable {
 	 */
 	private String articleUserNickname;
 
+	private String articleImg;
+
 }

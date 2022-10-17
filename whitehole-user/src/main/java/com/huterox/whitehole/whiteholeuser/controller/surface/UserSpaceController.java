@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserSpaceController {
     @Autowired
     UserSpaceService userSpaceService;
+
+
     @RequestMapping("/isLogin")
     @NeedLogin
     public R userIsLogin(@RequestParam(value="userid") String userid){
@@ -28,6 +30,38 @@ public class UserSpaceController {
         //查询用户所有的博客的接口，这个是个人页面使用的接口，所以必须验证
         return userSpaceService.userAllArticle(entity);
     }
+
+    @RequestMapping("/forkArticle")
+    @NeedLogin
+    public R userForkArticle(UserSpaceInfoListQueryEntity entity){
+        return userSpaceService.userForkArticle(entity);
+    }
+
+    @RequestMapping("/statusArticle")
+    @NeedLogin
+    public R userStatusArticle(UserSpaceInfoListQueryEntity entity){
+        return userSpaceService.userStatusArticle(entity);
+    }
+
+    @RequestMapping("/privateArticle")
+    @NeedLogin
+    public R userPrivateArticle(UserSpaceInfoListQueryEntity entity){
+        return userSpaceService.userPrivateArticle(entity);
+    }
+
+    @RequestMapping("/joinUnity")
+    @NeedLogin
+    public R userJoinUnity(UserSpaceInfoListQueryEntity entity){
+        return null;
+    }
+
+    @RequestMapping("/manageUnity")
+    @NeedLogin
+    public R userManageUnity(UserSpaceInfoListQueryEntity entity){
+        return null;
+    }
+
+
 
 
 }

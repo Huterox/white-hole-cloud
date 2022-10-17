@@ -8,7 +8,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @MapperScan("com.huterox.whitehole.whiteholehole.dao")
 @EnableDiscoveryClient
-@EnableFeignClients("com.huterox.whitehole.whiteholehole.feign")
+//@EnableFeignClients("com.huterox.whitehole.whiteholehole.feign")
 @SpringBootApplication
 public class WhiteholeHoleApplication {
 

@@ -7,5 +7,7 @@ public interface UserSpaceService {
 
     public R userIsLogin(String userid);
     public R userAllArticle(UserSpaceInfoListQueryEntity entity);
-
+    public R userStatusArticle(UserSpaceInfoListQueryEntity entity);
+    public R userPrivateArticle(UserSpaceInfoListQueryEntity entity);
+    public R userForkArticle(UserSpaceInfoListQueryEntity entity);
 }
