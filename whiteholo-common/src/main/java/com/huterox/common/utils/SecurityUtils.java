@@ -1,4 +1,4 @@
-package com.huterox.whitehole.whiteholeuser.utils;
+package com.huterox.common.utils;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

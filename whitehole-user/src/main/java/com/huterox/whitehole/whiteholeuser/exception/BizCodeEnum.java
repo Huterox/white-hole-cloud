@@ -18,6 +18,9 @@ public enum BizCodeEnum {
     BAD_LOGIN_PARAMS(10012,"请求异常！触发5次以上账号将保护性封禁"),
     NUNKNOW_LGINTYPE(10013,"平台识别异常"),
     BAD_TOKEN(10014,"token校验失败"),
+    DON_NOT_SENDEMAIL(10015,"验证码未发送,或已过期"),
+    PASSWORD_NO_EQUAL(10016,"密码比对失败，收到验证码后，请不要再修改密码"),
+    OVER_EMAIL_REQUESTS(10017,"超过邮箱发送频次"),
     SUCCESSFUL(200,"successful");
 
     private int code;

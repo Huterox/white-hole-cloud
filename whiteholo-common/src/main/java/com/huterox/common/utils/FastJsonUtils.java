@@ -1,4 +1,4 @@
-package com.huterox.whitehole.whiteholeuser.utils;
+package com.huterox.common.utils;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;

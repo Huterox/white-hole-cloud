@@ -31,7 +31,7 @@ public class LogQuizEntity implements Serializable {
 	/**
 	 * 
 	 */
-	private Date creatTime;
+	private String creatTime;
 	/**
 	 * 1-问题发布 2-问题删除 3-问题修改
 	 */

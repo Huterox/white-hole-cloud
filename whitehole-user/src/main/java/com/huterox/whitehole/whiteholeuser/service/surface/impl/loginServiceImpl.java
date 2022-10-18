@@ -1,9 +1,11 @@
 package com.huterox.whitehole.whiteholeuser.service.surface.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.huterox.common.utils.LoginType;
 import com.huterox.common.utils.R;
+import com.huterox.common.utils.SecurityUtils;
 import com.huterox.whitehole.whiteholeuser.entity.surface.login.LoginEntity;
-import com.huterox.whitehole.whiteholeuser.entity.surface.login.LoginToken;
+import com.huterox.common.utils.LoginToken;
 import com.huterox.whitehole.whiteholeuser.exception.BizCodeEnum;
 import com.huterox.whitehole.whiteholeuser.service.base.UserService;
 import com.huterox.whitehole.whiteholeuser.service.surface.LoginService;

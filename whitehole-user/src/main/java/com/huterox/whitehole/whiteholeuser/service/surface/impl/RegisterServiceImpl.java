@@ -2,7 +2,10 @@ package com.huterox.whitehole.whiteholeuser.service.surface.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.huterox.common.utils.CodeUtils;
+import com.huterox.common.utils.DateUtils;
 import com.huterox.common.utils.R;
+import com.huterox.common.utils.SecurityUtils;
 import com.huterox.whitehole.whiteholeuser.entity.surface.register.EmailCodeEntity;
 import com.huterox.whitehole.whiteholeuser.entity.surface.register.GetEmailCodeEntity;
 import com.huterox.whitehole.whiteholeuser.entity.surface.register.RegisterEntity;
@@ -63,7 +66,7 @@ public class RegisterServiceImpl implements RegisterService {
                 return R.error(BizCodeEnum.BAD_DOING.getCode(),BizCodeEnum.BAD_DOING.getMsg());
             }
         }else {
-            return R.error(BizCodeEnum.OVER_TIME.getCode(),BizCodeEnum.OVER_TIME.getMsg());
+            return R.error(BizCodeEnum.DON_NOT_SENDEMAIL.getCode(),BizCodeEnum.DON_NOT_SENDEMAIL.getMsg());
         }
         return R.ok(BizCodeEnum.SUCCESSFUL.getMsg());
     }
@@ -76,6 +79,7 @@ public class RegisterServiceImpl implements RegisterService {
         String username = entity.getUsername();
         //判断用户是不是恶意刷邮箱，在规定时间内进行的
         if (redisUtils.hasKey(RedisTransKey.getEmailKey(username))) {
+            //注意我们这边得到的是一个对象，需要toString一下
             Object o = redisUtils.get(RedisTransKey.getEmailKey(username));
             EmailCodeEntity emailCodeEntity = JSON.parseObject(o.toString(), EmailCodeEntity.class);
             if (emailCodeEntity.getTimes() >= limit) {

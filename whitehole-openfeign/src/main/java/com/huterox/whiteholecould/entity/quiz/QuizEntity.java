@@ -1,5 +1,6 @@
 package com.huterox.whiteholecould.entity.quiz;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -26,7 +27,7 @@ public class QuizEntity implements Serializable {
 	/**
 	 * 问题的主键，除了user其他的都是使用id自增的策略
 	 */
-	@TableId
+	@TableId(type = IdType.AUTO)
 	private Long quizid;
 	/**
 	 * 问题的具体描述

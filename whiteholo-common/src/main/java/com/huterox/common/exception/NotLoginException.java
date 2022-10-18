@@ -1,4 +1,4 @@
-package com.huterox.whitehole.whiteholeuser.exception;
+package com.huterox.common.exception;
 
 public class NotLoginException extends RuntimeException{
     public NotLoginException(){}

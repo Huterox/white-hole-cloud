@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.huterox.whiteholecould.entity.user.HeadimgEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,6 +51,18 @@ public class HeadimgController {
     public R info(@PathVariable("imgid") Long imgid){
 		HeadimgEntity headimg = headimgService.getById(imgid);
 
+        return R.ok().put("headimg", headimg);
+    }
+
+    @RequestMapping("/headimg/{userid}")
+    //RequiresPermissions("user:headimg:info")
+    public R headimg(@PathVariable("userid") String userid){
+        HeadimgEntity headimg = headimgService.getOne(
+                new QueryWrapper<HeadimgEntity>().eq("userid", userid)
+                        .orderByDesc("imgid")
+                        .last("limit 0,1")
+
+        );
         return R.ok().put("headimg", headimg);
     }
 

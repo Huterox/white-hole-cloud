@@ -35,6 +35,6 @@ public class HeadimgEntity implements Serializable {
 	/**
 	 * 图片的上传时间
 	 */
-	private Date creatTime;
+	private String creatTime;
 
 }

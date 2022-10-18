@@ -22,15 +22,11 @@ public class RegisterController {
         return registerService.register(entity);
     }
 
-
     @PostMapping ("/user/emailcode")
     public R emailCode(@Validated @RequestBody GetEmailCodeEntity entity
     )
     {
         return registerService.emailCode(entity);
     }
-
-
-
 
 }

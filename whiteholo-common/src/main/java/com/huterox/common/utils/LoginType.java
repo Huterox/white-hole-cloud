@@ -1,4 +1,4 @@
-package com.huterox.whitehole.whiteholeuser.utils;
+package com.huterox.common.utils;
 
 public class LoginType {
     public static final String PcType = "PcType";

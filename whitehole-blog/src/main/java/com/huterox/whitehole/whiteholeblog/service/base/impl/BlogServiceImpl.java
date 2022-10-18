@@ -1,8 +1,11 @@
 package com.huterox.whitehole.whiteholeblog.service.base.impl;
 
+import com.huterox.common.utils.SerializeUtil;
 import com.huterox.whiteholecould.entity.blog.BlogEntity;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+
+import java.io.Serializable;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -31,7 +34,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogDao, BlogEntity> implements
      * */
 
     @Override
-    public PageUtils queryPage(Map<String, Object> params) {
+    public PageUtils queryPage(Map<String, Object> params) throws Exception {
         String key = (String) params.get("key");
         String accurate = (String) params.get("accurate");
         IPage<BlogEntity> page_params = new Query<BlogEntity>().getPage(params);
@@ -59,7 +62,8 @@ public class BlogServiceImpl extends ServiceImpl<BlogDao, BlogEntity> implements
 
                 }else if(accurate.equals("many")){
                     Object accurate_query = params.get("accurate_query");
-                    BeanUtils.copyProperties(accurate_query,blogEntityQueryWrapper);
+                    QueryWrapper<BlogEntity> deserialize = (QueryWrapper<BlogEntity>) SerializeUtil.deserialize(accurate_query.toString());
+                    blogEntityQueryWrapper = deserialize;
                 }
             }
         }

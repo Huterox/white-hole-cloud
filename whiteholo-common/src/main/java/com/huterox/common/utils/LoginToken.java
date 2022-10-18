@@ -1,4 +1,4 @@
-package com.huterox.whitehole.whiteholeuser.entity.surface.login;
+package com.huterox.common.utils;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

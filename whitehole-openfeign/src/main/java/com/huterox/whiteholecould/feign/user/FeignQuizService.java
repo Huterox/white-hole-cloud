@@ -19,7 +19,7 @@ import java.util.Map;
  */
 @FeignClient("user")
 @RequestMapping("user/quiz")
-public interface QuizController {
+public interface FeignQuizService {
 
     /**
      * 列表

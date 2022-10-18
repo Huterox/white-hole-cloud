@@ -7,6 +7,7 @@ package com.huterox.whitehole.whiteholequiz.exception;
 public enum BizCodeEnum {
     UNKNOW_EXCEPTION(30000,"系统未知异常"),
     VAILD_EXCEPTION(30001,"参数格式校验失败"),
+    NO_SUCHUSER(30009,"该用户不存在"),
     SUCCESSFUL(200,"successful");
 
     private int code;

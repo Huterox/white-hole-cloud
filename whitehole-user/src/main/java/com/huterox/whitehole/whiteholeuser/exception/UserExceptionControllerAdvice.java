@@ -1,5 +1,8 @@
 package com.huterox.whitehole.whiteholeuser.exception;
 
+import com.huterox.common.exception.BadLoginParamsException;
+import com.huterox.common.exception.BadLoginTokenException;
+import com.huterox.common.exception.NotLoginException;
 import com.huterox.common.utils.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;

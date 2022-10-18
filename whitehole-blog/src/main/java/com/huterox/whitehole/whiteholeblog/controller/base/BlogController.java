@@ -34,7 +34,7 @@ public class BlogController {
      */
     @RequestMapping("/list")
     //RequiresPermissions("whiteholeblog:blog:list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R list(@RequestParam Map<String, Object> params) throws Exception {
         PageUtils page = blogService.queryPage(params);
         return R.ok().put("page", page);
     }

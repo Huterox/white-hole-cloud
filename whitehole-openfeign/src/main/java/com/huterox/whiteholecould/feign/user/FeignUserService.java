@@ -16,7 +16,7 @@ import java.util.Map;
  */
 @FeignClient("user")
 @RequestMapping("user/user")
-public interface UserController {
+public interface FeignUserService {
 
     /**
      * 列表

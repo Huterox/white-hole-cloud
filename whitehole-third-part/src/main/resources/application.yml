@@ -12,5 +12,5 @@ spring:
       secret-key: OFK5n10rjns4IGuW73ADeTucS9Rxmz
       oss:
         endpoint: oss-cn-shanghai.aliyuncs.com
-        bucket: whiteholecloud-dev
+        devbucket: whiteholecloud-dev
 

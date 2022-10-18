@@ -1,5 +1,6 @@
 package com.huterox.whiteholecould.feign.user;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.huterox.common.utils.R;
 
 import com.huterox.whiteholecould.entity.user.HeadimgEntity;
@@ -32,6 +33,11 @@ public interface FeignHeadimgService {
     @RequestMapping("/info/{imgid}")
     //RequiresPermissions("user:headimg:info")
     public R info(@PathVariable("imgid") Long imgid);
+
+    @RequestMapping("/headimg/{userid}")
+    //RequiresPermissions("user:headimg:info")
+    public R headimg(@PathVariable("userid") String userid);
+
     /**
      * 保存
      */

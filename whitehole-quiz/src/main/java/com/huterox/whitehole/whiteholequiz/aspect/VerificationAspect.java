@@ -1,13 +1,14 @@
-package com.huterox.whitehole.whiteholeuser.aspect;
+package com.huterox.whitehole.whiteholequiz.aspect;
 
 import com.alibaba.fastjson.JSON;
+
 import com.huterox.common.exception.BadLoginParamsException;
 import com.huterox.common.exception.BadLoginTokenException;
 import com.huterox.common.exception.NotLoginException;
-import com.huterox.common.utils.LoginType;
 import com.huterox.common.utils.LoginToken;
-import com.huterox.whitehole.whiteholeuser.utils.RedisTransKey;
-import com.huterox.whitehole.whiteholeuser.utils.RedisUtils;
+import com.huterox.common.utils.LoginType;
+import com.huterox.whitehole.whiteholequiz.utils.RedisTransKey;
+import com.huterox.whitehole.whiteholequiz.utils.RedisUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
