@@ -37,4 +37,11 @@ public class OssController {
     public R userSpaceUpImgPolicy() {
         return ossService.userSpaceUpImgPolicy();
     }
+
+    @RequestMapping("oss/quizWriteAnsImgPolicy")
+    public R quizWriteAnsImgPolicy() {
+        return ossService.quizWriteAnsImgPolicy();
+    }
+
+
 }

@@ -1,5 +1,6 @@
 package com.huterox.whitehole.whiteholequiz.service.base.impl;
 
+import com.huterox.common.utils.SerializeUtil;
 import com.huterox.whiteholecould.entity.quiz.AnsEntity;
 import com.huterox.whiteholecould.entity.quiz.QuizEntity;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class AnsServiceImpl extends ServiceImpl<AnsDao, AnsEntity> implements An
      * 对Status的描述 问题的状态，1-正常，2-审核，3-审核失败，4-下架（逻辑删除）
      * */
     @Override
-    public PageUtils queryPage(Map<String, Object> params) {
+    public PageUtils queryPage(Map<String, Object> params) throws Exception {
         String key = (String) params.get("key");
         String accurate = (String) params.get("accurate");
         IPage<AnsEntity> page_params = new Query<AnsEntity>().getPage(params);
@@ -45,15 +46,22 @@ public class AnsServiceImpl extends ServiceImpl<AnsDao, AnsEntity> implements An
                     String table_name = (String) params.get("table_name");
                     String order = (String) params.get("order");
                     Integer status = Integer.valueOf((String) params.get("status"));
-                    ansEntityQueryWrapper.eq(table_name,key)
-                            .eq("status",status);
+
+                    if(table_name.equals("HoleNULL")) {
+                        //说明此时的查询可能只是需要查询全部，但是需要指定status
+                        ansEntityQueryWrapper.eq("status", status);
+                    }else {
+                        ansEntityQueryWrapper.eq(table_name, key)
+                                .eq("status", status);
+                    }
                     if(order.equals("desc")){
                         ansEntityQueryWrapper.orderByDesc("ansid");
                     }
 
                 }else if(accurate.equals("many")){
                     Object accurate_query = params.get("accurate_query");
-                    ansEntityQueryWrapper = (QueryWrapper<AnsEntity>) accurate_query;
+                    QueryWrapper<AnsEntity> deserialize = (QueryWrapper<AnsEntity>) SerializeUtil.deserialize(accurate_query.toString());
+                    ansEntityQueryWrapper = deserialize;
                 }
             }
         }

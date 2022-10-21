@@ -36,7 +36,7 @@ public class AnsController {
      */
     @RequestMapping("/list")
     //RequiresPermissions("whiteholequiz:ans:list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R list(@RequestParam Map<String, Object> params) throws Exception {
         PageUtils page = ansService.queryPage(params);
 
         return R.ok().put("page", page);

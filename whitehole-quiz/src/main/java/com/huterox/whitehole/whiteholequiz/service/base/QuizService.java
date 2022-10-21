@@ -15,6 +15,6 @@ import java.util.Map;
  */
 public interface QuizService extends IService<QuizEntity> {
 
-    PageUtils queryPage(Map<String, Object> params);
+    PageUtils queryPage(Map<String, Object> params) throws Exception;
 }
 

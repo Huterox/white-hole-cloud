@@ -3,6 +3,16 @@ server:
 
 # mysql
 spring:
+
+  cache:
+    type:
+      redis
+    redis:
+      time-to-live: 7200000
+      key-prefix: QUIZCACHE_
+      use-key-prefix: true
+      cache-null-values: true
+
   application:
     name: quiz
   datasource:

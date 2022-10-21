@@ -6,16 +6,24 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotEmpty;
-
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UpQuizEntity {
+public class UpAnsEntity {
+
+    //回答者的userid
     @NotEmpty(message = "userid不能为空")
     private String userid;
-    @NotEmpty(message = "userid不能为空")
+    @NotNull(message = "quizid不能为空")
+    private Long quizid;
+    @NotEmpty(message = "quizTitle不能为空")
     private String quizTitle;
-    @Length(min = 10,max = 500,message="长度不能超过500")
-    private String quizContent;
+    //回答的Markdown文档
+    @NotEmpty(message = "context不能为空")
+    @Length(min = 10,message="长度不能低于10个字符")
+    private String context;
+
 }

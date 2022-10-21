@@ -30,13 +30,20 @@ public class OssServiceImpl implements OssService {
 
     public R userSpaceUpImgPolicy(){
         //现在还没有做好分级，先这样用着
-        return policy(devbucket);
+        return policy(devbucket,600L);
     }
+
+    @Override
+    public R quizWriteAnsImgPolicy() {
+        //这个也是先用着，后面再说
+        return policy(devbucket,60L);
+    }
+
     public R policy(){
         //默认传递bucket的就是那个测试的
-        return policy(devbucket);
+        return policy(devbucket,600L);
     }
-    public R policy(String bucket) {
+    public R policy(String bucket,Long expireTime) {
 
         // https://gulimall-hello.oss-cn-beijing.aliyuncs.com/hahaha.jpg  host的格式为 bucketname.endpoint
         String host = "https://" + bucket + "." + endpoint;
@@ -48,7 +55,7 @@ public class OssServiceImpl implements OssService {
 
         Map<String, String> respMap = null;
         try {
-            long expireTime = 600;
+
             long expireEndTime = System.currentTimeMillis() + expireTime * 1000;
             Date expiration = new Date(expireEndTime);
             PolicyConditions policyConds = new PolicyConditions();

@@ -1,5 +1,6 @@
 package com.huterox.whitehole.whiteholequiz.service.base.impl;
 
+import com.huterox.common.utils.SerializeUtil;
 import com.huterox.whiteholecould.entity.blog.BlogEntity;
 import com.huterox.whiteholecould.entity.quiz.QuizEntity;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,7 @@ public class QuizServiceImpl extends ServiceImpl<QuizDao, QuizEntity> implements
      * 对Status的描述 问题的状态，1-正常，2-审核，3-审核失败，4-下架
      * */
     @Override
-    public PageUtils queryPage(Map<String, Object> params) {
+    public PageUtils queryPage(Map<String, Object> params) throws Exception {
         String key = (String) params.get("key");
         String accurate = (String) params.get("accurate");
         IPage<QuizEntity> page_params = new Query<QuizEntity>().getPage(params);
@@ -47,15 +48,22 @@ public class QuizServiceImpl extends ServiceImpl<QuizDao, QuizEntity> implements
                     String table_name = (String) params.get("table_name");
                     String order = (String) params.get("order");
                     Integer status = Integer.valueOf((String) params.get("status"));
-                    quizEntityQueryWrapper.eq(table_name,key)
-                            .eq("status",status);
+                    if(table_name.equals("HoleNULL")){
+                        //说明此时的查询可能只是需要查询全部，但是需要指定status
+                        quizEntityQueryWrapper.eq("status",status);
+                    }else {
+                        quizEntityQueryWrapper.eq(table_name,key)
+                                .eq("status",status);
+                    }
+
                     if(order.equals("desc")){
                         quizEntityQueryWrapper.orderByDesc("quizid");
                     }
 
                 }else if(accurate.equals("many")){
                     Object accurate_query = params.get("accurate_query");
-                    quizEntityQueryWrapper = (QueryWrapper<QuizEntity>) accurate_query;
+                    QueryWrapper<QuizEntity> deserialize = (QueryWrapper<QuizEntity>) SerializeUtil.deserialize(accurate_query.toString());
+                    quizEntityQueryWrapper = deserialize;
                 }
             }
         }

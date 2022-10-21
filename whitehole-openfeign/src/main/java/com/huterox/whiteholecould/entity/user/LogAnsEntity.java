@@ -39,7 +39,7 @@ public class LogAnsEntity implements Serializable {
 	/**
 	 * 
 	 */
-	private Date creatTime;
+	private String creatTime;
 	/**
 	 * 1-回答 2-回答删除 3-回答修改
 	 */
