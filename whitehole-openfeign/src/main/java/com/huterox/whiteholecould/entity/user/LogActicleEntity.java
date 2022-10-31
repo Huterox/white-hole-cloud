@@ -35,7 +35,7 @@ public class LogActicleEntity implements Serializable {
 	/**
 	 * 
 	 */
-	private Date creteTime;
+	private String creteTime;
 	/**
 	 * 
 	 */

@@ -1,6 +1,7 @@
 package com.huterox.whitehole.whiteholemessage.NettyServer.Handler;
 
-import com.huterox.whitehole.whiteholemessage.Bean.ChatMsg;
+import com.huterox.common.utils.R;
+import com.huterox.whitehole.whiteholemessage.entity.surface.chatMsg.ChatMsgQ;
 import com.huterox.whitehole.whiteholemessage.Bean.DataContent;
 import com.huterox.whitehole.whiteholemessage.Enum.MessageActionEnum;
 import com.huterox.whitehole.whiteholemessage.NettyServer.ServerBoot;
@@ -20,98 +21,83 @@ import java.util.Objects;
 
 @Component
 @ChannelHandler.Sharable
-public class ServerListenerHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
-    private static final Logger log = LoggerFactory.getLogger(ServerBoot.class);
 
-    /**
-     * 当建立链接时将Channel放置在Group当中
-     */
-    @Override
-    public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
-        log.info("有新的客户端链接：[{}]", ctx.channel().id().asLongText());
-        // 添加到channelGroup 通道组
-        UserConnectPool.getChannelGroup().add(ctx.channel());
+public class ServerListenerHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
+
+    private static final Logger log = LoggerFactory.getLogger(ServerBoot.class);
+    static {
+        //先初始化出来
+        UserConnectPool.getChannelMap();
+        UserConnectPool.getChannelGroup();
     }
 
-    /**
-     * 读取数据
-     */
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {
-        /**
-         * 1.接受到msg
-         * 2.将msg转化为实体类
-         * 3.解析消息类型
-         * 将实体类当中的userid和连接的Channel进行对应
-         * */
         String content = msg.text();
-        Channel channel = ctx.channel();
+        /**获取客户端传过来的消息*/
         DataContent dataContent = JsonUtils.jsonToPojo(content, DataContent.class);
         assert dataContent != null;
         Integer action = dataContent.getAction();
+        Channel channel =  ctx.channel();
+        /**
+         * 根据消息类型对其进行处理，我们这里只做两个事情
+         * 1. 注册用户
+         * 2. 心跳在线
+         * */
         if(Objects.equals(action, MessageActionEnum.CONNECT.type)){
-            //进行关联注册
-            String senderId = dataContent.getChatMsg().getSenderId();
-            UserConnectPool.getChannelMap().put(senderId,channel);
-
-            // 将用户ID作为自定义属性加入到channel中，方便随时channel中获取用户ID
-            AttributeKey<String> key = AttributeKey.valueOf("userId");
-            ctx.channel().attr(key).setIfAbsent(senderId);
-
-        }else if(Objects.equals(action, MessageActionEnum.CHAT.type)){
             /**
-             * 解析你的消息，然后进行持久化，或者其他的操作，看你自己
+             * 2.1 当websocket 第一次 open 的时候，
+             * 初始化channel，把用的 channel 和 userid 关联起来
              * */
-            ChatMsg chatMsg = dataContent.getChatMsg();
+            String userid = dataContent.getUserid();
+            AttributeKey<String> key = AttributeKey.valueOf("userId");
+            ctx.channel().attr(key).setIfAbsent(userid);
+            UserConnectPool.getChannelMap().put(userid,channel);
+            UserConnectPool.output();
 
-            //发送消息
-            Channel receiverChannel = UserConnectPool.getChannel(chatMsg.getReceiverId());
-            if(receiverChannel==null){
-                //用户不在线
-            }else {
-                //为了保险起见你还可以在你的Group里面去查看有没有这样的Channel
-                //毕竟不太能够保证原子性操作嘛，反正底层也是CurrentMap
-                Channel findChannel = UserConnectPool.getChannelGroup().find(ctx.channel().id());
-                if(findChannel!=null){
-                    receiverChannel.writeAndFlush(
-                            new TextWebSocketFrame(
-                                    JsonUtils.objectToJson(chatMsg)
-                            )
-                    );
-                }else {
-                    //离线
-                }
-            }
+        } else if(Objects.equals(action, MessageActionEnum.KEEPALIVE.type)){
+            /**
+             * 心跳包的处理
+             * */
 
-        }else if (Objects.equals(action, MessageActionEnum.SIGNED.type)){
-
-        }else if (Objects.equals(action, MessageActionEnum.KEEPALIVE.type)){
-
-        }else if(Objects.equals(action, MessageActionEnum.PULL_FRIEND.type)){
+            System.out.println("收到来自channel 为["+channel+"]的心跳包"+dataContent);
+            channel.writeAndFlush(
+                    new TextWebSocketFrame(
+                            JsonUtils.objectToJson(R.ok("返回心跳包").
+                                    put("type", MessageActionEnum.KEEPALIVE.type))
+                    )
+            );
+            System.out.println("已返回消息");
 
         }
 
+    }
 
-
-
+    @Override
+    public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+        //接收到请求
+        log.info("有新的客户端链接：[{}]", ctx.channel().id().asLongText());
+        AttributeKey<String> key = AttributeKey.valueOf("userId");
+        ctx.channel().attr(key).setIfAbsent("temp");
+        UserConnectPool.getChannelGroup().add(ctx.channel());
     }
 
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
-        log.info("用户下线了:{}", ctx.channel().id().asLongText());
-        // 删除通道
-        UserConnectPool.getChannelGroup().remove(ctx.channel());
+        String chanelId = ctx.channel().id().asShortText();
+        log.info("客户端被移除：channel id 为："+chanelId);
         removeUserId(ctx);
+        UserConnectPool.getChannelGroup().remove(ctx.channel());
     }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        //打印异常
-        log.info("异常：{}", cause.getMessage());
-        // 删除通道
-        UserConnectPool.getChannelGroup().remove(ctx.channel());
+        cause.printStackTrace();
+        //发生了异常后关闭连接，同时从channelgroup移除
+        ctx.channel().close();
         removeUserId(ctx);
-        ctx.close();
+        UserConnectPool.getChannelGroup().remove(ctx.channel());
+
     }
 
     /**

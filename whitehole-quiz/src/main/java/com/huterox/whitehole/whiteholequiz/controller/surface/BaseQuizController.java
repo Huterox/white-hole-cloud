@@ -17,9 +17,8 @@ import org.springframework.web.bind.annotation.*;
 public class BaseQuizController {
     /**
      * 这个提问的接口是专门负责我们基本的一个提问的处理的
-     * 这个部分处理的都是需要经过我们的后台管理进行审核的
-     * 由于是开发阶段，所以的话，我们这边的话就是默认ok吧
-     * 等我们完整的开发完毕之后的话，我们默认改回来
+     * 当可信度评分低于阈值的时候，将设置状态为审核，将通知Message服务
+     * 由Message服务去通知对应的审核人员
      * */
     @Autowired
     BaseUpQuizService baseUpQuizService;
@@ -36,10 +35,10 @@ public class BaseQuizController {
         return baseUpQuizService.lastQuiz(entity);
     }
 
-    @Cacheable(value={"baseQuiz:hotQuizAns"},key = "#root.methodName")
     @RequestMapping("/hotQuiz")
-    public R hotQuizAns() throws Exception {
-        return baseUpQuizService.hotQuizAns();
+    @Cacheable(value={"baseQuiz:hotQuiz"},key = "#root.methodName")
+    public R hotQuiz() throws Exception {
+        return baseUpQuizService.hotQuiz();
     }
 
 

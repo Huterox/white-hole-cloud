@@ -16,7 +16,7 @@ public interface BaseUpQuizService {
 
     public R lastQuizAns(GetQuizAnsListEntity entity) throws Exception;
 
-    public R hotQuizAns() throws Exception;
+    public R hotQuiz() throws Exception;
 
     public R quizById(Long quizid);
 }

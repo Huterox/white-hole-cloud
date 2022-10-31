@@ -31,7 +31,7 @@ public class LogForkEntity implements Serializable {
 	/**
 	 * 
 	 */
-	private Date creatTime;
+	private String creatTime;
 	/**
 	 * 
 	 */

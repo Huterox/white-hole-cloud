@@ -31,7 +31,7 @@ public class BlogForkEntity implements Serializable {
 	/**
 	 * 
 	 */
-	private Date creatTime;
+	private String creatTime;
 	/**
 	 * 
 	 */

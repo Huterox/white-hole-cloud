@@ -59,6 +59,7 @@ public class BaseUpQuizServiceImpl implements BaseUpQuizService {
     @Autowired
     WordFilter wordFilter;
 
+    private final static Double threshold = 0.05;
 
     @Override
     public R BaseUpQuiz(UpQuizEntity entity) {
@@ -67,7 +68,7 @@ public class BaseUpQuizServiceImpl implements BaseUpQuizService {
             return R.error(BizCodeEnum.HAS_UPQUIZ.getCode(), BizCodeEnum.HAS_UPQUIZ.getMsg());
         }
         //判断用户是否存在
-        String backMessage;
+        String backMessage="success";
         R info = feignUserService.info(userid);
         String userString = FastJsonUtils.toJson(info.get("user"));
         UserEntity user = FastJsonUtils.fromJson(userString, UserEntity.class);
@@ -97,9 +98,9 @@ public class BaseUpQuizServiceImpl implements BaseUpQuizService {
              **/
             String quizContent = quizEntity.getQuizContent();
             int count = wordFilter.wordCount(quizContent);
-            if(count>=10){
+            if(count>=quizContent.length()*threshold){
                 return R.error(BizCodeEnum.OVER_SENSITIVE_WORDS.getCode(),BizCodeEnum.OVER_SENSITIVE_WORDS.getMsg());
-            }else if (count==0){
+            }else if (count>0&&count<quizContent.length()*threshold){
                 quizEntity.setStatus(1);
                 backMessage="哇！您的提交直接通过了呢！";
             }else {
@@ -160,7 +161,7 @@ public class BaseUpQuizServiceImpl implements BaseUpQuizService {
          * 负责上传用户的回答
          * */
         String userid = entity.getUserid();
-        String backMessage = "";
+        String backMessage = "success";
         //判断用户是否存在
         if(redisUtils.hasKey(RedisTransKey.getBaseUpQuizKey(entity.getUserid()))){
             return R.error(BizCodeEnum.HAS_UPANS.getCode(), BizCodeEnum.HAS_UPANS.getMsg());
@@ -186,9 +187,9 @@ public class BaseUpQuizServiceImpl implements BaseUpQuizService {
              * */
             String context = ansEntity.getContext();
             int count = wordFilter.wordCount(context);
-            if(count>=20){
+            if(count>=context.length()*threshold){
                 return R.error(BizCodeEnum.OVER_SENSITIVE_WORDS.getCode(),BizCodeEnum.OVER_SENSITIVE_WORDS.getMsg());
-            }else if(count==0){
+            }else if(count>0&&count<context.length()*threshold){
                 ansEntity.setStatus(1);
                 backMessage = "哇！您的内容直接通过了呢！";
             }else {
@@ -252,7 +253,7 @@ public class BaseUpQuizServiceImpl implements BaseUpQuizService {
     }
 
     @Override
-    public R hotQuizAns() throws Exception {
+    public R hotQuiz() throws Exception {
         HashMap<String, Object> params = new HashMap<>();
         //组装请求博文列表所需要的数据，当访问的为内部接口时，所有的参数均为Map形式
         params.put("page","1");

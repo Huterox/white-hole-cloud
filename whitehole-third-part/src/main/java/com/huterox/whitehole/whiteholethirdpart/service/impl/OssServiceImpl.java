@@ -36,12 +36,25 @@ public class OssServiceImpl implements OssService {
     @Override
     public R quizWriteAnsImgPolicy() {
         //这个也是先用着，后面再说
-        return policy(devbucket,60L);
+        return policy(devbucket,30L);
     }
+
+    @Override
+    public R blogWriteImgPolicy() {
+        //给博文上传的图片进行OSS授权
+        return policy(devbucket,30L);
+    }
+
+    @Override
+    public R blogFaceImgPolicy() {
+        //给博文的封面进行授权
+        return policy(devbucket,120L);
+    }
+
 
     public R policy(){
         //默认传递bucket的就是那个测试的
-        return policy(devbucket,600L);
+        return policy(devbucket,120L);
     }
     public R policy(String bucket,Long expireTime) {
 

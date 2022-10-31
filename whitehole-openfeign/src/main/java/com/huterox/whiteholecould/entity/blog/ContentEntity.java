@@ -1,5 +1,6 @@
 package com.huterox.whiteholecould.entity.blog;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -26,7 +27,7 @@ public class ContentEntity implements Serializable {
 	/**
 	 * 
 	 */
-	@TableId
+	@TableId(type = IdType.AUTO)
 	private Long contentid;
 	/**
 	 * 
@@ -35,7 +36,7 @@ public class ContentEntity implements Serializable {
 	/**
 	 * 
 	 */
-	private Date createTime;
+	private String createTime;
 	/**
 	 * 
 	 */

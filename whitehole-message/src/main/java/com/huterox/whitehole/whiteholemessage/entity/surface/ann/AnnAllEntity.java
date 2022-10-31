@@ -1,4 +1,4 @@
-package com.huterox.whitehole.whiteholemessage.Bean;
+package com.huterox.whitehole.whiteholemessage.entity.surface.ann;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,9 +9,6 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ChatMsg implements Serializable {
-    private String senderId;
-    private String receiverId;
+public class AnnAllEntity implements Serializable {
     private String msg;
-    private String msgId;
 }

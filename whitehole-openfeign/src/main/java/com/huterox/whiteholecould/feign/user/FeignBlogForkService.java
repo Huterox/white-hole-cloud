@@ -7,6 +7,7 @@ import com.huterox.whiteholecould.entity.user.BlogForkEntity;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -54,4 +55,8 @@ public interface FeignBlogForkService {
     @RequestMapping("/delete")
     //RequiresPermissions("user:blogfork:delete")
     public R delete(@RequestBody String[] userids);
+
+    @RequestMapping("/deletefork")
+    //RequiresPermissions("user:blogfork:delete")
+    public R deletefork(@RequestBody Map<String, Object> params);
 }

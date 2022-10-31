@@ -1,5 +1,6 @@
 package com.huterox.whitehole.whiteholecommunity.service.base.impl;
 
+import com.huterox.common.utils.SerializeUtil;
 import com.huterox.whiteholecould.entity.blog.BlogEntity;
 import com.huterox.whiteholecould.entity.community.CommunityEntity;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,7 @@ public class CommunityServiceImpl extends ServiceImpl<CommunityDao, CommunityEnt
      * */
 
     @Override
-    public PageUtils queryPage(Map<String, Object> params) {
+    public PageUtils queryPage(Map<String, Object> params) throws Exception {
 
         String key = (String) params.get("key");
         String accurate = (String) params.get("accurate");
@@ -42,22 +43,23 @@ public class CommunityServiceImpl extends ServiceImpl<CommunityDao, CommunityEnt
                 communityEntityQueryWrapper.like("communityid", key).or().
                         like("userid", key).or().
                         like("community_title", key);
-            }
-        }else {
-            //此时有accurate说明是用户端在调用
-            if(accurate.equals("single")){
-                String table_name = (String) params.get("table_name");
-                String order = (String) params.get("order");
-                Integer status = Integer.valueOf((String) params.get("status"));
-                communityEntityQueryWrapper.eq(table_name,key)
-                        .eq("status",status);
-                if(order.equals("desc")){
-                    communityEntityQueryWrapper.orderByDesc("communityid");
-                }
+            } else {
+                //此时有accurate说明是用户端在调用
+                if (accurate.equals("single")) {
+                    String table_name = (String) params.get("table_name");
+                    String order = (String) params.get("order");
+                    Integer status = Integer.valueOf((String) params.get("status"));
+                    communityEntityQueryWrapper.eq(table_name, key)
+                            .eq("status", status);
+                    if (order.equals("desc")) {
+                        communityEntityQueryWrapper.orderByDesc("communityid");
+                    }
 
-            }else if(accurate.equals("many")){
-                Object accurate_query = params.get("accurate_query");
-                communityEntityQueryWrapper = (QueryWrapper<CommunityEntity>) accurate_query;
+                } else if (accurate.equals("many")) {
+                    Object accurate_query = params.get("accurate_query");
+                    QueryWrapper<CommunityEntity> deserialize = (QueryWrapper<CommunityEntity>) SerializeUtil.deserialize(accurate_query.toString());
+                    communityEntityQueryWrapper = deserialize;
+                }
             }
         }
         IPage<CommunityEntity> page = this.page(

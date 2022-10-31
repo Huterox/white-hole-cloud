@@ -1,5 +1,8 @@
 package com.huterox.whitehole.whiteholemessage.Enum;
 
+import lombok.Data;
+
+
 public enum MessageActionEnum {
 
     //定义消息类型
@@ -8,7 +11,9 @@ public enum MessageActionEnum {
     CHAT(2,"聊天消息"),
     SIGNED(3,"消息签收"),
     KEEPALIVE(4,"客户端保持心跳"),
-    PULL_FRIEND(5, "拉取好友");
+    PULL_FRIEND(5, "拉取好友"),
+    HOLEADUITMSG(6,"社区审核消息");
+
 
     public final Integer type;
     public final String content;
@@ -16,4 +21,5 @@ public enum MessageActionEnum {
         this.type = type;
         this.content = content;
     }
+
 }

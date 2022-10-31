@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.huterox.whiteholecould.entity.user.BlogForkEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -84,5 +85,17 @@ public class BlogForkController {
 
         return R.ok();
     }
+
+    @RequestMapping("/deletefork")
+    //RequiresPermissions("user:blogfork:delete")
+    public R deletefork(@RequestBody Map<String, Object> params){
+        String userid = String.valueOf(params.get("userid"));
+        Long articleid = Long.valueOf(String.valueOf(params.get("articleid")));
+        QueryWrapper<BlogForkEntity> delWrapper = new QueryWrapper<>();
+        delWrapper.eq("userid",userid)
+                        .eq("articleid",articleid);
+        blogForkService.remove(delWrapper);
+        return R.ok();
+    };
 
 }

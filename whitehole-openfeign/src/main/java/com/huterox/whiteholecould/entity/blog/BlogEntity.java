@@ -1,5 +1,6 @@
 package com.huterox.whiteholecould.entity.blog;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -22,11 +23,11 @@ public class BlogEntity implements Serializable {
 	/**
 	 * 
 	 */
-	@TableId
 	private String userid;
 	/**
 	 * 
 	 */
+	@TableId(type = IdType.AUTO)
 	private Long blogid;
 	/**
 	 * 
@@ -47,7 +48,7 @@ public class BlogEntity implements Serializable {
 	/**
 	 * 
 	 */
-	private Date createTime;
+	private String createTime;
 	/**
 	 * 
 	 */
@@ -74,5 +75,6 @@ public class BlogEntity implements Serializable {
 	private String info;
 	private Integer forkNumber;
 	private String blogimg;
+	private Integer blogtype;
 
 }

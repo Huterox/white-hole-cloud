@@ -6,6 +6,7 @@ import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.util.concurrent.GlobalEventExecutor;
 
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class UserConnectPool {
@@ -25,6 +26,14 @@ public class UserConnectPool {
      */
     private static final Object lock1 = new Object();
     private static final Object lock2 = new Object();
+
+    public static void output(){
+        for (Map.Entry<String,Channel> entry  :channelMap.entrySet()) {
+            System.out.println("UserId:"+entry.getKey()
+                    +",ChannelId:"+entry.getValue().id().asLongText()
+            );
+        }
+    }
 
 
     public static ChannelGroup getChannelGroup() {
@@ -49,7 +58,7 @@ public class UserConnectPool {
         return channelMap;
     }
 
-    public static Channel getChannel(String userId) {
+    public static Channel getChannelFromMap(String userId) {
         if (null == channelMap) {
             return getChannelMap().get(userId);
         }

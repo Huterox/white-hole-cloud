@@ -12,7 +12,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @MapperScan("com.huterox.whitehole.whiteholeblog.dao")
 @EnableDiscoveryClient
-@EnableFeignClients(basePackages = {"com.huterox.whiteholecould.feign.user"})
+@EnableFeignClients(basePackages = {
+        "com.huterox.whiteholecould.feign.user",
+        "com.huterox.whiteholecould.feign.message"
+})
 @SpringBootApplication
 @EnableTransactionManagement
 @EnableCaching

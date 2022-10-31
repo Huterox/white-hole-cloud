@@ -9,4 +9,6 @@ public interface OssService {
     public R userSpaceUpImgPolicy();
 
     public R quizWriteAnsImgPolicy();
+    public R blogWriteImgPolicy();
+    public R blogFaceImgPolicy();
 }

@@ -53,9 +53,15 @@ public class BlogServiceImpl extends ServiceImpl<BlogDao, BlogEntity> implements
                     String order = (String) params.get("order");
                     Integer status = Integer.valueOf((String) params.get("status"));
                     Integer level = Integer.valueOf((String) params.get("level"));
-                    blogEntityQueryWrapper.eq(table_name,key)
-                            .eq("status",status)
-                            .eq("level",level);
+                    if(table_name.equals("HoleNULL")){
+                        blogEntityQueryWrapper.eq("status",status)
+                                .eq("level",level);
+                    }else {
+                        blogEntityQueryWrapper.eq(table_name,key)
+                                .eq("status",status)
+                                .eq("level",level);
+                    }
+
                     if(order.equals("desc")){
                         blogEntityQueryWrapper.orderByDesc("blogid");
                     }

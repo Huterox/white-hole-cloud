@@ -31,7 +31,7 @@ public class ForkEntity implements Serializable {
 	/**
 	 * 
 	 */
-	private Date createTime;
+	private String createTime;
 	/**
 	 * 这篇博客的作者的id
 	 */

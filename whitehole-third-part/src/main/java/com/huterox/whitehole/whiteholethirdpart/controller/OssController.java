@@ -43,5 +43,14 @@ public class OssController {
         return ossService.quizWriteAnsImgPolicy();
     }
 
+    @RequestMapping("oss/blogWriteImgPolicy")
+    public R blogWriteImgPolicy() {
+        return ossService.blogWriteImgPolicy();
+    }
+
+    @RequestMapping("oss/blogFaceImgPolicy")
+    public R blogFaceImgPolicy() {
+        return ossService.blogFaceImgPolicy();
+    }
 
 }

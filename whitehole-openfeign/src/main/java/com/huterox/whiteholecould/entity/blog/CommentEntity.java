@@ -1,5 +1,6 @@
 package com.huterox.whiteholecould.entity.blog;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -38,7 +39,7 @@ public class CommentEntity implements Serializable {
 	/**
 	 * 评论的id
 	 */
-	@TableId
+	@TableId(type = IdType.AUTO)
 	private Long commentid;
 	/**
 	 * 被评论的博客的id

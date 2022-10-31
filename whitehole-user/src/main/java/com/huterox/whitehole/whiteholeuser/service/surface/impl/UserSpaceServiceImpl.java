@@ -108,7 +108,7 @@ public class UserSpaceServiceImpl implements UserSpaceService {
             //如果没有问题的话，那么直接去修改即可
             BeanUtils.copyProperties(userInfoEditEntity,User);
             userService.updateById(User);
-            System.out.println(User);
+//            System.out.println(User);
             redisUtils.set(RedisTransKey.setUserInfoEditorKey(userInfoEditEntity.getUserid())
                     ,1,1, TimeUnit.DAYS
             );

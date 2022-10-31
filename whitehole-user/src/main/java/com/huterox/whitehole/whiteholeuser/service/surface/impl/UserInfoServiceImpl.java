@@ -11,7 +11,6 @@ import com.huterox.whitehole.whiteholeuser.service.surface.UserInfoService;
 import com.huterox.whiteholecould.entity.user.HeadimgEntity;
 import com.huterox.whiteholecould.entity.user.UserEntity;
 import com.huterox.whiteholecould.feign.blog.FeignBlogService;
-import com.huterox.whiteholecould.feign.blog.FeignCommentService;
 import com.huterox.whiteholecould.feign.community.FeignCommunityService;
 import com.huterox.whiteholecould.feign.quiz.FeignAnsService;
 import com.huterox.whiteholecould.feign.quiz.FeignQuizService;
