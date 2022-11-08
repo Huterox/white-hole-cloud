@@ -16,6 +16,7 @@ public class HoleAduitMsgQ {
     private String userid;
     private String msg;
     private String msgtitle;
-    private Long linkid;
+    private String linkid;
+    private String linkid2;
     private Integer type;
 }

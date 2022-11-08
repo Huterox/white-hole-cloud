@@ -12,8 +12,8 @@ import java.util.Map;
 
 
 @Slf4j
-@RestControllerAdvice(basePackages = "com.huterox.whitehole.whiteholeblog.controller")
-public class BlogExceptionControllerAdvice {
+@RestControllerAdvice(basePackages = "com.huterox.whitehole.whiteholecommunity.controller")
+public class CommunityExceptionControllerAdvice {
 
     @ExceptionHandler(value= MethodArgumentNotValidException.class)
     public R handleVaildException(MethodArgumentNotValidException e){

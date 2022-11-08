@@ -35,7 +35,7 @@ public class UsersEntity implements Serializable {
 	/**
 	 * 
 	 */
-	private Date createTime;
+	private String createTime;
 	/**
 	 * 
 	 */

@@ -27,7 +27,7 @@ public class LogManageCommunityEntity implements Serializable {
 	/**
 	 * 
 	 */
-	private Date createTime;
+	private String createTime;
 	/**
 	 * 1-创建社区 2-删除社区
 	 */

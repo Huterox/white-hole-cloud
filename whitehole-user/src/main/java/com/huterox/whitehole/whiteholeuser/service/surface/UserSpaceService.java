@@ -18,6 +18,10 @@ public interface UserSpaceService {
     public R userPrivateArticle(UserSpaceInfoListQueryEntity entity);
     public R userForkArticle(UserSpaceInfoListQueryEntity entity);
 
+    public R userAllQuiz(UserSpaceInfoListQueryEntity entity) throws Exception;
+    public R userAllAns(UserSpaceInfoListQueryEntity entity) throws Exception;
 
+    public R userJoinUnity(UserSpaceInfoListQueryEntity entity) throws Exception;
+    public R userManagerUnity(UserSpaceInfoListQueryEntity entity) throws Exception;
 
 }

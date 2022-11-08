@@ -27,15 +27,15 @@ public class BlogHomePageServiceImpl implements BlogHomePageService {
         params.put("accurate","many");
         //这里的key是没什么用的单纯占位置的
         params.put("key","1");
-        QueryWrapper<BlogEntity> quizEntityQueryWrapper = new QueryWrapper<BlogEntity>();
-        quizEntityQueryWrapper.eq("status",1)
+        QueryWrapper<BlogEntity> blogEntityQueryWrapper = new QueryWrapper<BlogEntity>();
+        blogEntityQueryWrapper.eq("status",1)
                 .eq("level",1)
                 .orderByDesc("fork_number")
                 .orderByDesc("collect_number")
                 .orderByDesc("like_number")
                 .orderByDesc("view_number");
 
-        params.put("accurate_query", SerializeUtil.serialize(quizEntityQueryWrapper));
+        params.put("accurate_query", SerializeUtil.serialize(blogEntityQueryWrapper));
         PageUtils page = blogService.queryPage(params);
         return R.ok().put("page", page);
     }

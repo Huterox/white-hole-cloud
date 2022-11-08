@@ -77,4 +77,6 @@ public class BlogEntity implements Serializable {
 	private String blogimg;
 	private Integer blogtype;
 
+	private Long communityid;
+
 }

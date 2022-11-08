@@ -27,4 +27,6 @@ public class UpBlogEntity {
     private Integer level=1;
     @NotNull
     private Integer blogtype=1;
+
+    private Long community;
 }

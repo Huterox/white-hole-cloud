@@ -51,6 +51,12 @@ public class OssServiceImpl implements OssService {
         return policy(devbucket,120L);
     }
 
+    @Override
+    public R communityImgPolicy() {
+        //给社区的封面进行授权
+        return policy(devbucket,120L);
+    }
+
 
     public R policy(){
         //默认传递bucket的就是那个测试的
@@ -68,7 +74,6 @@ public class OssServiceImpl implements OssService {
 
         Map<String, String> respMap = null;
         try {
-
             long expireEndTime = System.currentTimeMillis() + expireTime * 1000;
             Date expiration = new Date(expireEndTime);
             PolicyConditions policyConds = new PolicyConditions();

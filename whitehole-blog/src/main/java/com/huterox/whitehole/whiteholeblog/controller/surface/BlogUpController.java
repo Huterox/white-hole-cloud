@@ -4,6 +4,7 @@ import com.huterox.common.holeAnnotation.NeedLogin;
 import com.huterox.common.utils.R;
 import com.huterox.whitehole.whiteholeblog.entity.surface.blogUp.UpBlogEntity;
 import com.huterox.whitehole.whiteholeblog.service.surface.BlogUpService;
+import com.huterox.whiteholecould.entity.blog.Q.CommunityBlogUpQ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,5 +24,9 @@ public class BlogUpController {
         return blogUpService.blogUp(upBlogEntity);
     }
 
+    @PostMapping("/communityBlogUp")
+    public R communityBlogUp(CommunityBlogUpQ entity){
+        return blogUpService.communityBlogUp(entity);
+    }
 
 }

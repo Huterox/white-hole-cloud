@@ -55,6 +55,8 @@ public class BlogsEntity implements Serializable {
 	/**
 	 * 
 	 */
-	private Date createTime;
+	private String createTime;
+
+	private Integer status;
 
 }

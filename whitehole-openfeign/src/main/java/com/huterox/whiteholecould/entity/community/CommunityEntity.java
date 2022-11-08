@@ -1,5 +1,6 @@
 package com.huterox.whiteholecould.entity.community;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -22,7 +23,7 @@ public class CommunityEntity implements Serializable {
 	/**
 	 * 
 	 */
-	@TableId
+	@TableId(type = IdType.AUTO)
 	private Long communityid;
 	/**
 	 * 
@@ -35,7 +36,7 @@ public class CommunityEntity implements Serializable {
 	/**
 	 * 
 	 */
-	private Date createTime;
+	private String createTime;
 	/**
 	 * 
 	 */

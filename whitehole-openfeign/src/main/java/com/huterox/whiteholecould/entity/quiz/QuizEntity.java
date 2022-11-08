@@ -70,4 +70,5 @@ public class QuizEntity implements Serializable {
 	 */
 	private String createTime;
 
+	private Long communityid;
 }

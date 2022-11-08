@@ -1,6 +1,7 @@
 package com.huterox.whitehole.whiteholemessage.entity.base;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -35,7 +36,9 @@ public class HoleAuditEntity implements Serializable {
 	/**
 	 * 
 	 */
-	private Long linkid;
+	private String linkid;
+
+
 	/**
 	 * 
 	 */
@@ -52,4 +55,6 @@ public class HoleAuditEntity implements Serializable {
 
 	private Integer type;
 
+	@TableField(value = "linkid2")
+	private String linkid2;
 }

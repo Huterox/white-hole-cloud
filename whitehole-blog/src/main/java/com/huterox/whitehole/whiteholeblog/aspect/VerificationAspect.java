@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.huterox.common.exception.BadLoginParamsException;
 import com.huterox.common.exception.BadLoginTokenException;
 import com.huterox.common.exception.NotLoginException;
+import com.huterox.common.utils.IDNODE;
 import com.huterox.common.utils.LoginToken;
 import com.huterox.common.utils.LoginType;
 import com.huterox.whitehole.whiteholeblog.utils.RedisTransKey;
@@ -13,6 +14,8 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.CodeSignature;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestAttributes;
@@ -61,6 +64,35 @@ public class VerificationAspect {
         if(tokenUser==null || userid==null || loginType==null){
             throw new BadLoginParamsException();
         }
+
+        /**
+         * 这里我们还需要进行验证，就是说咱们这个请求携带的和header携带的userid是不是一样的
+         * 如果不是一样的那个直接可以判断userid被恶意篡改了,我们所有的接口都是只有一个参数的
+         * 有多的参数都会被封装在对应的请求数据类当中
+         * */
+
+        Object[] args = proceedingJoinPoint.getArgs();
+        String[] paramNames = ((CodeSignature)proceedingJoinPoint.getSignature()).getParameterNames();
+        if(args!=null && paramNames!=null){
+            String param = paramNames[0];
+            Object arg = args[0];
+            if(param.equals("userid")){
+                String argValue = String.valueOf(arg);
+                if(!argValue.equals(userid)){
+                    //在未来这里是要搞事情的
+                    throw new BadLoginTokenException();
+                }
+            }else {
+                IDNODE idnode = new IDNODE();
+                BeanUtils.copyProperties(arg,idnode);
+                if(!idnode.getUserid().equals(userid)){
+                    //在未来这里是要搞事情的
+                    throw new BadLoginTokenException();
+                }
+            }
+        }
+
+
         if(redisUtils.hasKey(tokenKey)){
             if(loginType.equals(LoginType.PcType)){
                 Object o = redisUtils.get(tokenKey);

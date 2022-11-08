@@ -31,7 +31,7 @@ public class ManageCommunityEntity implements Serializable {
 	/**
 	 * 
 	 */
-	private Date createTime;
+	private String createTime;
 	/**
 	 * 
 	 */

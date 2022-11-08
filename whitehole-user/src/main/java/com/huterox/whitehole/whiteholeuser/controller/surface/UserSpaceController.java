@@ -95,7 +95,16 @@ public class UserSpaceController {
     /**
      * 这部分是关于问答部分的接口
      * */
-
+    @RequestMapping("/allQuiz")
+    @NeedLogin
+    public R userAllQuiz(UserSpaceInfoListQueryEntity entity) throws Exception {
+        return userSpaceService.userAllQuiz(entity);
+    }
+    @RequestMapping("/allQuiz")
+    @NeedLogin
+    public R userAllQAns(UserSpaceInfoListQueryEntity entity) throws Exception {
+        return userSpaceService.userAllAns(entity);
+    }
 
 
     /**
@@ -104,19 +113,18 @@ public class UserSpaceController {
 
     @RequestMapping("/joinUnity")
     @NeedLogin
-    public R userJoinUnity(UserSpaceInfoListQueryEntity entity){
-        return null;
+    public R userJoinUnity(UserSpaceInfoListQueryEntity entity) throws Exception {
+        return userSpaceService.userJoinUnity(entity);
     }
 
     @RequestMapping("/manageUnity")
     @NeedLogin
-    public R userManageUnity(UserSpaceInfoListQueryEntity entity){
-        return null;
+    public R userManageUnity(UserSpaceInfoListQueryEntity entity) throws Exception {
+        return userSpaceService.userManagerUnity(entity);
     }
 
-    /**
-     * 这部分的是关于问答处理的接口
-     * */
+
+
 
 
 

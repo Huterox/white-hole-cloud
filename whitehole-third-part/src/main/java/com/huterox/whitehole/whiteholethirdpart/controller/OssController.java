@@ -53,4 +53,9 @@ public class OssController {
         return ossService.blogFaceImgPolicy();
     }
 
+    @RequestMapping("oss/communityImgPolicy")
+    public R communityImgPolicy(){
+        return ossService.communityImgPolicy();
+    }
+
 }

@@ -15,6 +15,6 @@ import java.util.Map;
  */
 public interface BlogsService extends IService<BlogsEntity> {
 
-    PageUtils queryPage(Map<String, Object> params);
+    PageUtils queryPage(Map<String, Object> params) throws Exception;
 }
 

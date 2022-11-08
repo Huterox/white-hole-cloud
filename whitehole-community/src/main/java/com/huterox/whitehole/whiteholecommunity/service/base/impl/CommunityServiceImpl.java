@@ -49,8 +49,15 @@ public class CommunityServiceImpl extends ServiceImpl<CommunityDao, CommunityEnt
                     String table_name = (String) params.get("table_name");
                     String order = (String) params.get("order");
                     Integer status = Integer.valueOf((String) params.get("status"));
-                    communityEntityQueryWrapper.eq(table_name, key)
-                            .eq("status", status);
+                    if(table_name.equals("HoleNULL")){
+                        communityEntityQueryWrapper
+                                .eq("status", status);
+                    }else {
+
+                        communityEntityQueryWrapper.eq(table_name, key)
+                                .eq("status", status);
+                    }
+
                     if (order.equals("desc")) {
                         communityEntityQueryWrapper.orderByDesc("communityid");
                     }

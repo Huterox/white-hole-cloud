@@ -30,7 +30,7 @@ public class CommunityJoinEntity implements Serializable {
 	/**
 	 * 创建该社区的是谁
 	 */
-	private Integer communityUserid;
+	private String communityUserid;
 	/**
 	 * 社区的封面
 	 */
@@ -51,5 +51,7 @@ public class CommunityJoinEntity implements Serializable {
 	 * 社区的创建者的姓名
 	 */
 	private String communityUserNickname;
+
+	private String communityJoinTime;
 
 }

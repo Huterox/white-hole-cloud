@@ -11,4 +11,6 @@ public interface OssService {
     public R quizWriteAnsImgPolicy();
     public R blogWriteImgPolicy();
     public R blogFaceImgPolicy();
+
+    public R communityImgPolicy();
 }

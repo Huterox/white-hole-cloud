@@ -46,7 +46,12 @@ public class HoleAduitMsgServiceImpl implements HoleAduitMsgService {
                                 )
                         )
                 );
+            }else {
+                //状态为2表示当前用户可能由于什么原因没有和我们的消息服务器连接
+                holeAuditEntity.setStatus(2);
             }
+        }else {
+            holeAuditEntity.setStatus(2);
         }
 
         //这里进行消息的存储

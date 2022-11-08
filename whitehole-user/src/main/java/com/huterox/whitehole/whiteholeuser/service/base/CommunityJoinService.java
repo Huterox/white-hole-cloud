@@ -15,6 +15,6 @@ import java.util.Map;
  */
 public interface CommunityJoinService extends IService<CommunityJoinEntity> {
 
-    PageUtils queryPage(Map<String, Object> params);
+    PageUtils queryPage(Map<String, Object> params) throws Exception;
 }
 

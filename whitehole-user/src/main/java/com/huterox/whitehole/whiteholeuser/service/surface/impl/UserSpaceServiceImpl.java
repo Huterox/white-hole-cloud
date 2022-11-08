@@ -5,16 +5,18 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.huterox.common.utils.*;
 import com.huterox.whitehole.whiteholeuser.entity.surface.userspace.*;
 import com.huterox.whitehole.whiteholeuser.exception.BizCodeEnum;
-import com.huterox.whitehole.whiteholeuser.service.base.BlogForkService;
-import com.huterox.whitehole.whiteholeuser.service.base.HeadimgService;
-import com.huterox.whitehole.whiteholeuser.service.base.UserService;
+import com.huterox.whitehole.whiteholeuser.service.base.*;
 import com.huterox.whitehole.whiteholeuser.service.surface.MailService;
 import com.huterox.whitehole.whiteholeuser.service.surface.UserSpaceService;
 import com.huterox.whitehole.whiteholeuser.utils.*;
 import com.huterox.whiteholecould.entity.blog.BlogEntity;
+import com.huterox.whiteholecould.entity.quiz.AnsEntity;
+import com.huterox.whiteholecould.entity.quiz.QuizEntity;
 import com.huterox.whiteholecould.entity.user.HeadimgEntity;
 import com.huterox.whiteholecould.entity.user.UserEntity;
 import com.huterox.whiteholecould.feign.blog.FeignBlogService;
+import com.huterox.whiteholecould.feign.quiz.FeignAnsService;
+import com.huterox.whiteholecould.feign.quiz.FeignQuizService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,6 +44,20 @@ public class UserSpaceServiceImpl implements UserSpaceService {
 
     @Autowired
     MailService mailService;
+
+    @Autowired
+    FeignQuizService feignQuizService;
+
+    @Autowired
+    FeignAnsService feignAnsService;
+
+    @Autowired
+    CommunityJoinService communityJoinService;
+
+    @Autowired
+    ManageCommunityService manageCommunityService;
+
+
 
     @Override
     public R userShowInfo(String userid) {
@@ -264,6 +280,67 @@ public class UserSpaceServiceImpl implements UserSpaceService {
         params.put("order","desc");
         params.put("table_name","userid");
         PageUtils page = blogForkService.queryPage(params);
+        return R.ok().put("page", page);
+    }
+
+    @Override
+    public R userAllQuiz(UserSpaceInfoListQueryEntity entity) throws Exception {
+        //查询当前用户的提问
+        HashMap<String, Object> params = new HashMap<>();
+        //组装请求博文列表所需要的数据，当访问的为内部接口时，所有的参数均为Map形式
+        params.put("page",entity.getPage());
+        params.put("limit",entity.getLimit());
+        params.put("accurate","many");
+        params.put("key",entity.getUserid());
+        QueryWrapper<QuizEntity> quizEntityQueryWrapper = new QueryWrapper<QuizEntity>();
+        quizEntityQueryWrapper.eq("userid",entity.getUserid())
+                .orderByDesc("quizid");
+
+        params.put("accurate_query", SerializeUtil.serialize(quizEntityQueryWrapper));
+        return feignQuizService.list(params);
+    }
+
+    @Override
+    public R userAllAns(UserSpaceInfoListQueryEntity entity) throws Exception {
+        //查询当前用户的回答
+        HashMap<String, Object> params = new HashMap<>();
+        //组装请求博文列表所需要的数据，当访问的为内部接口时，所有的参数均为Map形式
+        params.put("page",entity.getPage());
+        params.put("limit",entity.getLimit());
+        params.put("accurate","many");
+        params.put("key",entity.getUserid());
+        QueryWrapper<AnsEntity> ansEntityQueryWrapper = new QueryWrapper<AnsEntity>();
+        ansEntityQueryWrapper.eq("userid",entity.getUserid())
+                .orderByDesc("qansid");
+        params.put("accurate_query", SerializeUtil.serialize(ansEntityQueryWrapper));
+        return feignAnsService.list(params);
+    }
+
+    @Override
+    public R userJoinUnity(UserSpaceInfoListQueryEntity entity) throws Exception {
+        //用户加入的社区
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("page",entity.getPage().toString());
+        params.put("limit",entity.getLimit().toString());
+        params.put("key",entity.getUserid());
+        params.put("accurate","single");
+        params.put("order","desc");
+        params.put("table_name","userid");
+        PageUtils page = communityJoinService.queryPage(params);
+        return R.ok().put("page", page);
+    }
+
+    @Override
+    public R userManagerUnity(UserSpaceInfoListQueryEntity entity) throws Exception {
+        //用户管理的社区
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("page",entity.getPage().toString());
+        params.put("limit",entity.getLimit().toString());
+        params.put("key",entity.getUserid());
+        params.put("accurate","single");
+        params.put("order","desc");
+        params.put("table_name","userid");
+        PageUtils page = manageCommunityService.queryPage(params);
         return R.ok().put("page", page);
     }
 
