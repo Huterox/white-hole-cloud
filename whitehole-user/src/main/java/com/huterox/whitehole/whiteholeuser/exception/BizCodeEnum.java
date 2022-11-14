@@ -21,6 +21,8 @@ public enum BizCodeEnum {
     DON_NOT_SENDEMAIL(10015,"验证码未发送,或已过期"),
     PASSWORD_NO_EQUAL(10016,"密码比对失败，收到验证码后，请不要再修改密码"),
     OVER_EMAIL_REQUESTS(10017,"超过邮箱发送频次"),
+    NO_SUCH_COMMUNITY(10018,"没有查询到此社区"),
+    NO_SUCH_AUTHORITY(10019,"非法获取权限，IP进入十分钟禁闭室！"),
     SUCCESSFUL(200,"successful");
 
     private int code;

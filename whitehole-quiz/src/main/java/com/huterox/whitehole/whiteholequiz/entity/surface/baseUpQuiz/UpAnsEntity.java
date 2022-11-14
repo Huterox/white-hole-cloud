@@ -25,5 +25,7 @@ public class UpAnsEntity {
     @NotEmpty(message = "context不能为空")
     @Length(min = 10,message="长度不能低于10个字符")
     private String context;
+    //社区的id
+    private Long communityid;
 
 }

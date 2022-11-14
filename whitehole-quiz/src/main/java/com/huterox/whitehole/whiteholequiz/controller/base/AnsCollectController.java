@@ -46,10 +46,10 @@ public class AnsCollectController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{userid}")
+    @RequestMapping("/info/{ansid}")
     //RequiresPermissions("whiteholequiz:anscollect:info")
-    public R info(@PathVariable("userid") String userid){
-		AnsCollectEntity ansCollect = ansCollectService.getById(userid);
+    public R info(@PathVariable("ansid") Long ansid){
+		AnsCollectEntity ansCollect = ansCollectService.getById(ansid);
 
         return R.ok().put("ansCollect", ansCollect);
     }

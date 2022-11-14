@@ -3,12 +3,13 @@ package com.huterox.whiteholecould.feign.community;
 import com.huterox.common.utils.PageUtils;
 import com.huterox.common.utils.R;
 import com.huterox.whiteholecould.entity.community.QuizsEntity;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.Map;
 
-@RestController
+@FeignClient("community")
 @RequestMapping("whiteholecommunity/quizs")
 public interface FeignQuizsService {
 

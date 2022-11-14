@@ -2,7 +2,6 @@ package com.huterox.whitehole.whiteholequiz.service.base.impl;
 
 import com.huterox.common.utils.SerializeUtil;
 import com.huterox.whiteholecould.entity.quiz.AnsEntity;
-import com.huterox.whiteholecould.entity.quiz.QuizEntity;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;

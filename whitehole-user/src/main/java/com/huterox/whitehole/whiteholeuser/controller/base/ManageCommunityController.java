@@ -35,7 +35,7 @@ public class ManageCommunityController {
      */
     @RequestMapping("/list")
     //RequiresPermissions("user:managecommunity:list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R list(@RequestParam Map<String, Object> params) throws Exception {
         PageUtils page = manageCommunityService.queryPage(params);
 
         return R.ok().put("page", page);

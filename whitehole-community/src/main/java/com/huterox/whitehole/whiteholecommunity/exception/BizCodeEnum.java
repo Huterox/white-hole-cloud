@@ -16,7 +16,9 @@ public enum BizCodeEnum {
     BAD_BLOGINFO(40010,"文章摘要存在敏感信息"),
     BAD_CONTEXT(40011,"文章内容存在敏感信息"),
     OVER_UPBLOG(40012,"休息一分钟再来吧！"),
-    BAD_AUTHORITY(40007,"非法越权操作"),
+    BAD_AUTHORITY(40013,"非法越权操作,保护性封禁10分钟"),
+    BAD_QUIZ(40014,"当前提问不适宜发布"),
+    BAD_SOURCE(40015,"当前资源不存在"),
     SUCCESSFUL(200,"successful");
 
     private int code;

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 
 @Data
@@ -18,4 +19,6 @@ public class UpQuizEntity {
     private String quizTitle;
     @Length(min = 10,max = 500,message="长度不能超过500")
     private String quizContent;
+    @NotNull
+    private Long community;
 }

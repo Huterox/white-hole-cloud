@@ -7,6 +7,7 @@ import com.huterox.whitehole.whiteholequiz.entity.surface.baseUpQuiz.GetQuizList
 import com.huterox.whitehole.whiteholequiz.entity.surface.baseUpQuiz.UpAnsEntity;
 import com.huterox.whitehole.whiteholequiz.entity.surface.baseUpQuiz.UpQuizEntity;
 import com.huterox.whitehole.whiteholequiz.service.surface.baseUpQuiz.BaseUpQuizService;
+import com.huterox.whiteholecould.entity.quiz.Q.CommunityUpQuizQ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.validation.annotation.Validated;
@@ -58,6 +59,10 @@ public class BaseQuizController {
         return baseUpQuizService.quizById(quizid);
     }
 
+    @PostMapping("/communityUpQuiz")
+    public R communityUpQuiz(@Validated @RequestBody CommunityUpQuizQ communityUpQuizQ){
+        return baseUpQuizService.CommunityUpQuiz(communityUpQuizQ);
+    }
 
 
 }

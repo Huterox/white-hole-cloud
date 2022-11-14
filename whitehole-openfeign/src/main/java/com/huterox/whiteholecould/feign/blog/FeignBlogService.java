@@ -30,9 +30,9 @@ public interface FeignBlogService {
     /**
      * 信息
      */
-    @RequestMapping("/info/{userid}")
+    @RequestMapping("/info/{blogid}")
     //RequiresPermissions("whiteholeblog:blog:info")
-    public R info(@PathVariable("userid") String userid);
+    public R info(@PathVariable("blogid") Long blogid);
 
     /**
      * 保存

@@ -59,7 +59,7 @@ public class CommunityUserServiceImpl implements CommunityUserService {
 
     @Override
     public R JoinUser(JoinQ joinQ) {
-        /**
+        /*
          * 这里负责用户社区的加入
          * 这个userid是谁要加入我们这个社区
          * 1. 判断用户是不是加入了
@@ -130,14 +130,14 @@ public class CommunityUserServiceImpl implements CommunityUserService {
 
     @Override
     public R AcJoinUser(AcJoinQ acJoinQ) {
-        /**
+        /*
          * 这里进行10秒限制
          * 1. 先进行疯狂校验
          * 2. 进行存储
          * 3. 通知用户
          * */
         String userid = acJoinQ.getUserid();
-        String backMessage = "操作完成，已通知该成员";
+        String backMessage;
         if(redisUtils.hasKey(RedisTransKey.getAcAuthority(userid))){
             return R.error(BizCodeEnum.TOO_FASTAUTHORITY.getCode(), BizCodeEnum.TOO_FASTAUTHORITY.getMsg());
         }
@@ -185,7 +185,7 @@ public class CommunityUserServiceImpl implements CommunityUserService {
         CommunityJoinEntity isJoin = FastJsonUtils.fromJson(in, CommunityJoinEntity.class);
         //此时已经存在了
         if(isJoin !=null){
-            backMessage = "您已加入此社区";
+            backMessage = "该用户已加入社区";
             redisUtils.set(RedisTransKey.setAcAuthority(manageID)
                     ,1,10, TimeUnit.SECONDS
             );
@@ -240,6 +240,12 @@ public class CommunityUserServiceImpl implements CommunityUserService {
         redisUtils.set(RedisTransKey.setAcAuthority(manageID)
                 ,1,10, TimeUnit.SECONDS
         );
+
+        //更新一下社区的用户数量
+        comm.setMemberNumber(comm.getMemberNumber()+1);
+        communityService.updateById(comm);
+
+
         backMessage = "操作完成，已通知该成员";
         return R.ok(backMessage);
     }

@@ -22,7 +22,7 @@ public class AnsCollectEntity implements Serializable {
 	/**
 	 * 收藏者的一个id
 	 */
-	@TableId
+
 	private String userid;
 	/**
 	 * 回答者的一个id
@@ -31,6 +31,7 @@ public class AnsCollectEntity implements Serializable {
 	/**
 	 * 回答的一个id
 	 */
+	@TableId
 	private Long ansid;
 	/**
 	 * 收藏者的一个昵称

@@ -4,6 +4,7 @@ package com.huterox.whiteholecould.feign.community;
 import com.huterox.common.utils.R;
 import com.huterox.whiteholecould.entity.community.LogEntity;
 
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -16,7 +17,7 @@ import java.util.Map;
  * @email 3139541502@qq.com
  * @date 2022-09-15 10:34:12
  */
-@RestController
+@FeignClient("community")
 @RequestMapping("whiteholecommunity/log")
 public interface FeignLogService {
 

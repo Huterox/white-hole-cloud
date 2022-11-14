@@ -16,6 +16,9 @@ public enum BizCodeEnum {
     HAS_UPQUIZ(30010,"提问次数过于频繁，歇息一分钟吧"),
     HAS_UPANS(30011,"回答次数过去频繁，歇息五分钟吧"),
     OVER_SENSITIVE_WORDS(30011,"内容不适宜发布，铭感词汇较多"),
+    NO_SUCHQUIZ(30012,"该提问不存在，或已被删除"),
+    BAD_AUTHORITY(30013,"检测到疑似恶意操作，进入10分钟拒绝服务"),
+    BAD_QUIZ_STATUS(30013,"当前提问状态异常，禁止访问"),
     SUCCESSFUL(200,"successful");
 
     private int code;

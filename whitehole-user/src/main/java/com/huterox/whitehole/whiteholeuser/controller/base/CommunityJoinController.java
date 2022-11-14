@@ -36,7 +36,7 @@ public class CommunityJoinController {
      */
     @RequestMapping("/list")
     //RequiresPermissions("user:communityjoin:list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R list(@RequestParam Map<String, Object> params) throws Exception {
         PageUtils page = communityJoinService.queryPage(params);
 
         return R.ok().put("page", page);

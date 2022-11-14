@@ -33,16 +33,22 @@ public class BlogUpServiceImpl implements BlogUpService {
 
     @Autowired
     FeignUserService feignUserService;
+
     @Autowired
     ContentService contentService;
+
     @Autowired
     FeignHeadimgService feignHeadimgService;
+
     @Autowired
     WordFilter wordFilter;
+
     @Autowired
     BlogService blogService;
+
     @Autowired
     FeignLogActicleService feignLogActicleService;
+
     @Autowired
     RedisUtils redisUtils;
 
@@ -51,6 +57,7 @@ public class BlogUpServiceImpl implements BlogUpService {
 
     @Autowired
     FeignBlogsService feignBlogsService;
+
 
     private final static Double threshold = 0.05;
 
@@ -63,7 +70,7 @@ public class BlogUpServiceImpl implements BlogUpService {
     @Override
     public R blogUp(UpBlogEntity entity) {
         String userid = entity.getUserid();
-        String backMessage = "success";
+        String backMessage;
         //接口限流
         if (redisUtils.hasKey(RedisTransKey.getBlogUpKey(entity.getUserid()))) {
             return R.error(BizCodeEnum.OVER_UPBLOG.getCode(), BizCodeEnum.OVER_UPBLOG.getMsg());
@@ -74,7 +81,7 @@ public class BlogUpServiceImpl implements BlogUpService {
         if (user != null) {
             String context = entity.getContext();
             String blogInfo = entity.getInfo();
-            /**
+            /*
              * 先对context和bloginfo进行校验，是否为存在不友好的信息
              * */
             int countContext = wordFilter.wordCount(context);
@@ -128,7 +135,7 @@ public class BlogUpServiceImpl implements BlogUpService {
             blogEntity.setContentid(contentid);
             blogService.updateById(blogEntity);
             contentService.updateById(contentEntity);
-            /**
+            /*
              * 更新用户日志
              * */
             LogActicleEntity logActicleEntity = new LogActicleEntity();
@@ -139,11 +146,11 @@ public class BlogUpServiceImpl implements BlogUpService {
             logActicleEntity.setCreteTime(blogEntity.getCreateTime());
             feignLogActicleService.save(logActicleEntity);
 
-            /**
+            /*
              * 发送消息
              * */
             if (status == 1) {
-                /**
+                /*
                  * 此时是直接通过了审核，那么直接进行发送
                  * 如果没有的话，那么就是后台通过审核由MQ发送消息
                  * */
@@ -155,7 +162,7 @@ public class BlogUpServiceImpl implements BlogUpService {
                 holeAduitMsgQ.setType(1);
                 feignHoleAduitMsgService.holeAduitMsg(holeAduitMsgQ);
             }
-            /**
+            /*
              * 设置标志
              */
             redisUtils.set(RedisTransKey.setBlogUpKey(entity.getUserid())
@@ -175,7 +182,7 @@ public class BlogUpServiceImpl implements BlogUpService {
     @Override
     public R communityBlogUp(CommunityBlogUpQ entity) {
 
-        /**
+        /*
          *  1. 完成社区博文的上传
          *  2. 执行对应的操作
          *  3. 返回操作后的一个结果
@@ -188,7 +195,7 @@ public class BlogUpServiceImpl implements BlogUpService {
         if (user != null) {
             String context = entity.getContext();
             String blogInfo = entity.getInfo();
-            /**
+            /*
              * 先对context和bloginfo进行校验，是否为存在不友好的信息
              * */
             int countContext = wordFilter.wordCount(context);
@@ -244,7 +251,7 @@ public class BlogUpServiceImpl implements BlogUpService {
             blogEntity.setContentid(contentid);
             blogService.updateById(blogEntity);
             contentService.updateById(contentEntity);
-            /**
+            /*
              * 更新用户日志
              * */
             LogActicleEntity logActicleEntity = new LogActicleEntity();
@@ -268,17 +275,17 @@ public class BlogUpServiceImpl implements BlogUpService {
             //保存
             feignBlogsService.save(communityBlog);
 
-            /**
+            /*
              * 发送消息
              * */
             if (status == 1) {
-                /**
+                /*
                  * 此时是直接通过了审核，那么直接进行发送
                  * 如果没有的话，那么就是后台通过审核由MQ发送消息
                  * */
                 HoleAduitMsgQ holeAduitMsgQ = new HoleAduitMsgQ();
                 holeAduitMsgQ.setMsg(
-                        "您的博文" + blogEntity.getBlogTitle() + "直接通过了审核，成功发布在了"
+                        "您的博文" + blogEntity.getBlogTitle() + "通过了系统审核，成功发布在了"
                         +entity.getCommunityName()+"社区中"
                 );
                 holeAduitMsgQ.setMsgtitle("博文审核通过");
@@ -299,7 +306,7 @@ public class BlogUpServiceImpl implements BlogUpService {
                 holeAduitMsgQ.setType(1);
                 feignHoleAduitMsgService.holeAduitMsg(holeAduitMsgQ);
             } else {
-                /**
+                /*
                  * 此时是没有直接通过审核的，那么这样的话就需要通知社区的创建者进行审核了
                  * */
                 HoleAduitMsgQ holeAduitMsgQ = new HoleAduitMsgQ();

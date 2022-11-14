@@ -2,18 +2,18 @@ package com.huterox.whitehole.whiteholeuser.service.surface;
 
 
 import com.huterox.common.utils.R;
-import com.huterox.whitehole.whiteholeuser.entity.surface.unity.unityMListEntity;
+import com.huterox.whitehole.whiteholeuser.entity.surface.unity.UnityMListEntity;
 
 public interface UnityManagerService {
 
-    public R AllArticle(unityMListEntity entity);
-    public R StatusArticle(unityMListEntity entity);
+    public R AllArticle(UnityMListEntity entity) throws Exception;
+    public R StatusArticle(UnityMListEntity entity) throws Exception;
 
-    public R AllQuiz(unityMListEntity entity);
-    public R StatusQuiz(unityMListEntity entity);
-    public R StatusAns(unityMListEntity entity);
+    public R AllQuiz(UnityMListEntity entity) throws Exception;
+    public R StatusQuiz(UnityMListEntity entity) throws Exception;
+    public R StatusAns(UnityMListEntity entity) throws Exception;
 
-    public R AllUser(unityMListEntity entity);
-    public R StatusUser(unityMListEntity entity);
+    public R AllUser(UnityMListEntity entity) throws Exception;
+    public R StatusUser(UnityMListEntity entity);
 
 }

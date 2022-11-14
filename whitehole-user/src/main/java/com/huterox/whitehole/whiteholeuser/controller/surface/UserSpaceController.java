@@ -100,7 +100,7 @@ public class UserSpaceController {
     public R userAllQuiz(UserSpaceInfoListQueryEntity entity) throws Exception {
         return userSpaceService.userAllQuiz(entity);
     }
-    @RequestMapping("/allQuiz")
+    @RequestMapping("/allAns")
     @NeedLogin
     public R userAllQAns(UserSpaceInfoListQueryEntity entity) throws Exception {
         return userSpaceService.userAllAns(entity);
@@ -122,11 +122,5 @@ public class UserSpaceController {
     public R userManageUnity(UserSpaceInfoListQueryEntity entity) throws Exception {
         return userSpaceService.userManagerUnity(entity);
     }
-
-
-
-
-
-
 
 }

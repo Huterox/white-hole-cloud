@@ -68,4 +68,6 @@ public class AnsEntity implements Serializable {
 	@TableField("quizTitle")
 	private String quizTitle;
 
+	private Long communityid;
+
 }

@@ -43,11 +43,10 @@ public class BlogController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{userid}")
+    @RequestMapping("/info/{blogid}")
     //RequiresPermissions("whiteholeblog:blog:info")
-    public R info(@PathVariable("userid") String userid){
-		BlogEntity blog = blogService.getById(userid);
-
+    public R info(@PathVariable("blogid") Long blogid){
+		BlogEntity blog = blogService.getById(blogid);
         return R.ok().put("blog", blog);
     }
 

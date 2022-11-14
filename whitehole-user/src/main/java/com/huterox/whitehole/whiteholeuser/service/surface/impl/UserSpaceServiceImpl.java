@@ -10,11 +10,13 @@ import com.huterox.whitehole.whiteholeuser.service.surface.MailService;
 import com.huterox.whitehole.whiteholeuser.service.surface.UserSpaceService;
 import com.huterox.whitehole.whiteholeuser.utils.*;
 import com.huterox.whiteholecould.entity.blog.BlogEntity;
+import com.huterox.whiteholecould.entity.community.CommunityEntity;
 import com.huterox.whiteholecould.entity.quiz.AnsEntity;
 import com.huterox.whiteholecould.entity.quiz.QuizEntity;
 import com.huterox.whiteholecould.entity.user.HeadimgEntity;
 import com.huterox.whiteholecould.entity.user.UserEntity;
 import com.huterox.whiteholecould.feign.blog.FeignBlogService;
+import com.huterox.whiteholecould.feign.community.FeignCommunityService;
 import com.huterox.whiteholecould.feign.quiz.FeignAnsService;
 import com.huterox.whiteholecould.feign.quiz.FeignQuizService;
 import org.springframework.beans.BeanUtils;
@@ -57,6 +59,8 @@ public class UserSpaceServiceImpl implements UserSpaceService {
     @Autowired
     ManageCommunityService manageCommunityService;
 
+    @Autowired
+    FeignCommunityService feignCommunityService;
 
 
     @Override
@@ -311,7 +315,7 @@ public class UserSpaceServiceImpl implements UserSpaceService {
         params.put("key",entity.getUserid());
         QueryWrapper<AnsEntity> ansEntityQueryWrapper = new QueryWrapper<AnsEntity>();
         ansEntityQueryWrapper.eq("userid",entity.getUserid())
-                .orderByDesc("qansid");
+                .orderByDesc("ansid");
         params.put("accurate_query", SerializeUtil.serialize(ansEntityQueryWrapper));
         return feignAnsService.list(params);
     }
@@ -337,11 +341,11 @@ public class UserSpaceServiceImpl implements UserSpaceService {
         params.put("page",entity.getPage().toString());
         params.put("limit",entity.getLimit().toString());
         params.put("key",entity.getUserid());
-        params.put("accurate","single");
-        params.put("order","desc");
-        params.put("table_name","userid");
-        PageUtils page = manageCommunityService.queryPage(params);
-        return R.ok().put("page", page);
+        params.put("accurate","many");
+        QueryWrapper<CommunityEntity> communityEntityQueryWrapper = new QueryWrapper<>();
+        communityEntityQueryWrapper.eq("userid",entity.getUserid());
+        params.put("accurate_query",SerializeUtil.serialize(communityEntityQueryWrapper));
+        return feignCommunityService.list(params);
     }
 
 }
