@@ -1,18 +1,17 @@
-package com.huterox.whitehole.whiteholehole.controller;
+package com.huterox.whitehole.whiteholehole.controller.base;
 
 import java.util.Arrays;
 import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
+import com.huterox.whiteholecould.entity.hole.LogLogEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.huterox.whitehole.whiteholehole.entity.LogLogEntity;
-import com.huterox.whitehole.whiteholehole.service.LogLogService;
+import com.huterox.whitehole.whiteholehole.service.base.LogLogService;
 import com.huterox.common.utils.PageUtils;
 import com.huterox.common.utils.R;
 
@@ -37,7 +36,7 @@ public class LogLogController {
      */
     @RequestMapping("/list")
     //RequiresPermissions("whiteholehole:loglog:list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R list(@RequestParam Map<String, Object> params) throws Exception {
         PageUtils page = logLogService.queryPage(params);
 
         return R.ok().put("page", page);

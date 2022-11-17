@@ -1,8 +1,9 @@
-package com.huterox.whitehole.whiteholehole.service;
+package com.huterox.whitehole.whiteholehole.service.base;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.huterox.common.utils.PageUtils;
-import com.huterox.whitehole.whiteholehole.entity.LogLogEntity;
+import com.huterox.whiteholecould.entity.hole.LogLogEntity;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
@@ -16,6 +17,6 @@ import java.util.Map;
  */
 public interface LogLogService extends IService<LogLogEntity> {
 
-    PageUtils queryPage(Map<String, Object> params);
+    PageUtils queryPage(Map<String, Object> params) throws Exception;
 }
 

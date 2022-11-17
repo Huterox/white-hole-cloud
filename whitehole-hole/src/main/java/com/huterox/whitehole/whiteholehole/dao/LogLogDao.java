@@ -1,7 +1,7 @@
 package com.huterox.whitehole.whiteholehole.dao;
 
-import com.huterox.whitehole.whiteholehole.entity.LogLogEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.huterox.whiteholecould.entity.hole.LogLogEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

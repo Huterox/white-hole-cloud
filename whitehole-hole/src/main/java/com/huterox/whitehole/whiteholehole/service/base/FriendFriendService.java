@@ -1,8 +1,8 @@
-package com.huterox.whitehole.whiteholehole.service;
+package com.huterox.whitehole.whiteholehole.service.base;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.huterox.common.utils.PageUtils;
-import com.huterox.whitehole.whiteholehole.entity.FriendFriendEntity;
+import com.huterox.whiteholecould.entity.hole.FriendFriendEntity;
 
 import java.util.Map;
 

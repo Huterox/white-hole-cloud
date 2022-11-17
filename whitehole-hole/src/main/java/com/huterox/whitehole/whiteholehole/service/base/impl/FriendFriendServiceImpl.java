@@ -1,5 +1,6 @@
-package com.huterox.whitehole.whiteholehole.service.impl;
+package com.huterox.whitehole.whiteholehole.service.base.impl;
 
+import com.huterox.whiteholecould.entity.hole.FriendFriendEntity;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -9,8 +10,7 @@ import com.huterox.common.utils.PageUtils;
 import com.huterox.common.utils.Query;
 
 import com.huterox.whitehole.whiteholehole.dao.FriendFriendDao;
-import com.huterox.whitehole.whiteholehole.entity.FriendFriendEntity;
-import com.huterox.whitehole.whiteholehole.service.FriendFriendService;
+import com.huterox.whitehole.whiteholehole.service.base.FriendFriendService;
 
 
 @Service("friendFriendService")

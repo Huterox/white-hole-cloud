@@ -1,4 +1,4 @@
-package com.huterox.whitehole.whiteholeblog.exception;
+package com.huterox.whitehole.whiteholehole.exception;
 
 import com.huterox.common.exception.BadLoginParamsException;
 import com.huterox.common.exception.BadLoginTokenException;
@@ -15,8 +15,9 @@ import java.util.Map;
 
 
 @Slf4j
-@RestControllerAdvice(basePackages = "com.huterox.whitehole.whiteholeblog.controller")
-public class BlogExceptionControllerAdvice {
+@RestControllerAdvice(basePackages = "com.huterox.whitehole.whiteholehole.controller")
+public class HoleExceptionControllerAdvice {
+
 
     @ExceptionHandler(value= MethodArgumentNotValidException.class)
     public R handleVaildException(MethodArgumentNotValidException e){
@@ -54,5 +55,4 @@ public class BlogExceptionControllerAdvice {
         log.error("错误：",throwable);
         return R.error(BizCodeEnum.UNKNOW_EXCEPTION.getCode(),BizCodeEnum.UNKNOW_EXCEPTION.getMsg());
     }
-
 }

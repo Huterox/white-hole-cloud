@@ -1,11 +1,8 @@
-package com.huterox.whitehole.whiteholeblog.service.base.impl;
+package com.huterox.whitehole.whiteholehole.service.base.impl;
 
 import com.huterox.common.utils.SerializeUtil;
-import com.huterox.whiteholecould.entity.blog.BlogEntity;
-import org.springframework.beans.BeanUtils;
+import com.huterox.whiteholecould.entity.hole.LogLogEntity;
 import org.springframework.stereotype.Service;
-
-import java.io.Serializable;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -13,12 +10,12 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.huterox.common.utils.PageUtils;
 import com.huterox.common.utils.Query;
 
-import com.huterox.whitehole.whiteholeblog.dao.BlogDao;
-import com.huterox.whitehole.whiteholeblog.service.base.BlogService;
+import com.huterox.whitehole.whiteholehole.dao.LogLogDao;
+import com.huterox.whitehole.whiteholehole.service.base.LogLogService;
 
 
-@Service("blogService")
-public class BlogServiceImpl extends ServiceImpl<BlogDao, BlogEntity> implements BlogService {
+@Service("logLogService")
+public class LogLogServiceImpl extends ServiceImpl<LogLogDao, LogLogEntity> implements LogLogService {
 
     /**
      *
@@ -37,48 +34,38 @@ public class BlogServiceImpl extends ServiceImpl<BlogDao, BlogEntity> implements
     public PageUtils queryPage(Map<String, Object> params) throws Exception {
         String key = (String) params.get("key");
         String accurate = (String) params.get("accurate");
-        IPage<BlogEntity> page_params = new Query<BlogEntity>().getPage(params);
-        QueryWrapper<BlogEntity> blogEntityQueryWrapper = new QueryWrapper<>();
+        IPage<LogLogEntity> page_params = new Query<LogLogEntity>().getPage(params);
+        QueryWrapper<LogLogEntity> logLogEntityQueryWrapper = new QueryWrapper<>();
         if(key!=null){
             if(accurate==null){
                 //此时表示只有key,没有accurate，说明是后台管理系统在调用
-                blogEntityQueryWrapper.like("userid",key).or().
-                        like("blogid",key).or().
-                        like("user_nickname",key).or().
-                        like("blog_title",key);
+                logLogEntityQueryWrapper.eq("userid",key);
             }else {
                 //此时有accurate说明是用户端在调用
                 if(accurate.equals("single")){
                     String table_name = (String) params.get("table_name");
                     String order = (String) params.get("order");
-                    Integer status = Integer.valueOf((String) params.get("status"));
-                    Integer level = Integer.valueOf((String) params.get("level"));
-                    if(table_name.equals("HoleNULL")){
-                        blogEntityQueryWrapper.eq("status",status)
-                                .eq("level",level);
-                    }else {
-                        blogEntityQueryWrapper.eq(table_name,key)
-                                .eq("status",status)
-                                .eq("level",level);
-                    }
+
+                    logLogEntityQueryWrapper.eq(table_name,key);
 
                     if(order.equals("desc")){
-                        blogEntityQueryWrapper.orderByDesc("blogid");
+                        logLogEntityQueryWrapper.orderByDesc("create_time");
                     }
 
                 }else if(accurate.equals("many")){
                     Object accurate_query = params.get("accurate_query");
-                    QueryWrapper<BlogEntity> deserialize = (QueryWrapper<BlogEntity>) SerializeUtil.deserialize(accurate_query.toString());
-                    blogEntityQueryWrapper = deserialize;
+                    QueryWrapper<LogLogEntity> deserialize = (QueryWrapper<LogLogEntity>) SerializeUtil.deserialize(accurate_query.toString());
+                    logLogEntityQueryWrapper = deserialize;
                 }
             }
         }
-        IPage<BlogEntity> page = this.page(
+        IPage<LogLogEntity> page = this.page(
                 page_params,
-                blogEntityQueryWrapper
+                logLogEntityQueryWrapper
         );
 
         return new PageUtils(page);
     }
+
 
 }
