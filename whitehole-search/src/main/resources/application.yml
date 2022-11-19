@@ -1,0 +1,15 @@
+server:
+  port: 8600
+
+# mysql
+spring:
+  application:
+    name: search
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        service: search
+
+
+

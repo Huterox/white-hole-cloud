@@ -17,6 +17,16 @@
         <module>whitehole-quiz</module>
         <module>whitehole-blog</module>
         <module>whitehole-community</module>
+        <module>renren-fast</module>
+        <module>whitehole-hole</module>
+        <module>renren-generator</module>
+        <module>whiteholo-common</module>
+        <module>whitehole-gateway</module>
+        <module>whitehole-openfeign</module>
+        <module>whitehole-search</module>
+        <module>whitehole-third-part</module>
+        <module>whitehole-autoserver</module>
+        <module>whitehole-message</module>
     </modules>
 
 </project>

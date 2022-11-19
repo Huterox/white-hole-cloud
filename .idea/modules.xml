@@ -2,12 +2,23 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/whitehole-quiz/whitehole-activity/whitehole-activity.iml" filepath="$PROJECT_DIR$/whitehole-quiz/whitehole-activity/whitehole-activity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/renren-fast/renren-fast.iml" filepath="$PROJECT_DIR$/renren-fast/renren-fast.iml" />
+      <module fileurl="file://$PROJECT_DIR$/renren-generator/renren-generator.iml" filepath="$PROJECT_DIR$/renren-generator/renren-generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whitehole-activity/whitehole-activity.iml" filepath="$PROJECT_DIR$/whitehole-activity/whitehole-activity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whitehole-autoserver/whitehole-autoserver.iml" filepath="$PROJECT_DIR$/whitehole-autoserver/whitehole-autoserver.iml" />
       <module fileurl="file://$PROJECT_DIR$/whitehole-blog/whitehole-blog.iml" filepath="$PROJECT_DIR$/whitehole-blog/whitehole-blog.iml" />
-      <module fileurl="file://$PROJECT_DIR$/community/whitehole-community.iml" filepath="$PROJECT_DIR$/community/whitehole-community.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whitehole-community/whitehole-community.iml" filepath="$PROJECT_DIR$/whitehole-community/whitehole-community.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whitehole-feign/whitehole-feign.iml" filepath="$PROJECT_DIR$/whitehole-feign/whitehole-feign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whitehole-gateway/whitehole-gateway.iml" filepath="$PROJECT_DIR$/whitehole-gateway/whitehole-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whitehole-hole/whitehole-hole.iml" filepath="$PROJECT_DIR$/whitehole-hole/whitehole-hole.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whitehole-message/whitehole-message.iml" filepath="$PROJECT_DIR$/whitehole-message/whitehole-message.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whitehole-openfeign/whitehole-openfeign.iml" filepath="$PROJECT_DIR$/whitehole-openfeign/whitehole-openfeign.iml" />
       <module fileurl="file://$PROJECT_DIR$/whitehole-quiz/whitehole-quiz.iml" filepath="$PROJECT_DIR$/whitehole-quiz/whitehole-quiz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whitehole-search/whitehole-search.iml" filepath="$PROJECT_DIR$/whitehole-search/whitehole-search.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whitehole-third-part/whitehole-third-part.iml" filepath="$PROJECT_DIR$/whitehole-third-part/whitehole-third-part.iml" />
       <module fileurl="file://$PROJECT_DIR$/whitehole-user/whitehole-user.iml" filepath="$PROJECT_DIR$/whitehole-user/whitehole-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/whiteholecloud0.7.iml" filepath="$PROJECT_DIR$/.idea/whiteholecloud0.7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whiteholo-common/whiteholo-common.iml" filepath="$PROJECT_DIR$/whiteholo-common/whiteholo-common.iml" />
     </modules>
   </component>
 </project>

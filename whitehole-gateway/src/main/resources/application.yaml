@@ -1,0 +1,115 @@
+
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        service: gateway
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        #这里先做一个基本的服务转发
+        - id: activiy8000
+          uri: lb://activiy
+          predicates:
+            - Path=/api/activiy/**
+          filters:
+            - RewritePath=/api/activiy/(?<segment>.*),/$\{segment}
+
+        - id: blog8050
+          uri: lb://blog
+          predicates:
+            - Path=/api/blog/**
+          filters:
+            #- 转发做拼接，去掉provide后缀，uri/** 而不是 uri/provide/**
+            - RewritePath=/api/blog/(?<segment>.*),/$\{segment}
+        # 与之对于的还有 PrefixPath=/Huterox
+        #  当访问 http://localhost:8762/aaa，加上前缀就变成 http://localhost:8762/Huterox/aaa
+
+        - id: community8100
+          uri: lb://community
+          predicates:
+            - Path=/api/community/**
+          filters:
+            - RewritePath=/api/community/(?<segment>.*),/$\{segment}
+
+        - id: hole8150
+          uri: lb://hole
+          predicates:
+            - Path=/api/hole/**
+          filters:
+            - RewritePath=/api/hole/(?<segment>.*),/$\{segment}
+
+
+        - id: quiz8200
+          uri: lb://quiz
+          predicates:
+            - Path=/api/quiz/**
+          filters:
+            - RewritePath=/api/quiz/(?<segment>.*),/$\{segment}
+
+        - id: user8250
+          uri: lb://user
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - RewritePath=/api/user/(?<segment>.*),/$\{segment}
+
+        - id: search8600
+          uri: lb://search
+          predicates:
+            - Path=/api/search/**
+          filters:
+            - RewritePath=/api/search/(?<segment>.*),/$\{segment}
+
+        - id: autoserver8900
+          uri: lb://autoserver
+          predicates:
+            - Path=/api/autoserver/**
+          filters:
+            - RewritePath=/api/autoserver/(?<segment>.*),/$\{segment}
+
+        - id: message8350
+          uri: lb://message
+          predicates:
+            - Path=/api/message/**
+          filters:
+            - RewritePath=/api/message/(?<segment>.*),/$\{segment}
+
+        - id: third-part30000
+          uri: lb://third-part
+          predicates:
+            - Path=/api/third-part/**
+          filters:
+            - RewritePath=/api/third-part/(?<segment>.*),/$\{segment}
+
+
+
+
+
+        - id: admin_route
+          uri: lb://renren-fast  # 网关负载均衡的发送到renren-fast
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}  #实现路径重写
+
+  ## 所有前端项目带  /api
+  ## http://localhost:88/api/captcha.jpg
+  ## http://localhost:8080/renren-fast/captcha.jpg
+
+
+
+  application:
+    name: gateway
+
+
+
+
+server:
+  port: 88
+
+
